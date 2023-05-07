@@ -35,12 +35,24 @@
 		</form>
 		<br /><br />
 		<form id="search-form-category">
-			<label for="word">Search by category:</label>
+			<label for="category">Search by category:</label>
 			<select name="category" id="category">
+				<option value=""></option>
 				<option value="Job">Job</option>
 				<option value="Volunteer">Volunteer</option>
 				<option value="Workshop">Workshop</option>
 				<option value="Social">Social</option>
+			</select>
+			<input type="submit" value="Search" />
+		</form>
+		<br /><br />
+		<form id="search-form-status">
+			<label for="status">Search by status:</label>
+			<select name="status" id="status">
+				<option value=""></option>
+				<option value="open">Open</option>
+				<option value="accepted">Accepted</option>
+				<option value="completed">Completed</option>
 			</select>
 			<input type="submit" value="Search" />
 		</form>

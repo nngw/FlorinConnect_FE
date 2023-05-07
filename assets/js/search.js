@@ -3,6 +3,8 @@ const searchFormDate = document.getElementById('search-form-date');
 const searchFormBetween = document.getElementById('search-form-between');
 const searchFormWord = document.getElementById('search-form-word');
 const searchFormCategory = document.getElementById('search-form-category');
+const searchFormStatus = document.getElementById('search-form-status');
+
 const results = document.getElementById('search-results-date');
 
 const createPosts = (data) => {
@@ -99,6 +101,19 @@ searchFormCategory.addEventListener('submit', async (e) => {
 	try {
 		const category = document.getElementById('category').value;
 		const res = await fetch(`http://localhost:3000/posts/category/${category}`);
+		const posts = await res.json();
+		createPosts(posts);
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+searchFormStatus.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	try {
+		const status = document.getElementById('status').value;
+		const res = await fetch(`http://localhost:3000/posts/status/${status}`);
 		const posts = await res.json();
 		createPosts(posts);
 	} catch (error) {
