@@ -1,9 +1,11 @@
 // Get the form element and add an event listener for form submission
 const searchFormDate = document.getElementById('search-form-date');
 const searchFormBetween = document.getElementById('search-form-between');
+const searchFormWord = document.getElementById('search-form-word');
 const results = document.getElementById('search-results-date');
 
 const createPosts = (data) => {
+	results.innerHTML = '';
 	data.forEach((post) => {
 		const card = document.createElement('div');
 		card.classList.add('card', 'flex-row', 'mb-4');
@@ -71,6 +73,19 @@ searchFormBetween.addEventListener('submit', async (e) => {
 		const res = await fetch(`http://localhost:3000/posts/date/${startDate}/${endDate}`);
 		const posts = await res.json();
 
+		createPosts(posts);
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+searchFormWord.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	try {
+		const word = document.getElementById('word').value;
+		const res = await fetch(`http://localhost:3000/posts/word/${word}`);
+		const posts = await res.json();
 		createPosts(posts);
 	} catch (error) {
 		console.error(error);
