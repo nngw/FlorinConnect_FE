@@ -56,6 +56,7 @@ const createPosts = (data) => {
 
 searchFormDate.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
 	try {
 		const searchInput = document.getElementById('search-date');
 		const searchValue = searchInput.value;
@@ -75,7 +76,6 @@ searchFormBetween.addEventListener('submit', async (e) => {
 		const endDate = document.getElementById('end-date').value;
 		const res = await fetch(`http://localhost:3000/posts/date/${startDate}/${endDate}`);
 		const posts = await res.json();
-
 		createPosts(posts);
 	} catch (error) {
 		console.error(error);
