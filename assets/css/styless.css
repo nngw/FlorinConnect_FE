@@ -1,3 +1,7 @@
+/* NavBar syling */
+body{
+    font-family: 'Montserrat', sans-serif;
+}
 .navbar{
     padding: 0;
     margin: 10;
@@ -18,7 +22,6 @@
 
 .nav-link{
     color: #FFF;
-    font-family: 'Montserrat', sans-serif;
     margin-left: 30px;
 }
 
@@ -32,7 +35,6 @@ h2{
     margin: 0;
     padding: 0;
     color: #FFF;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 800;
 }
 
@@ -40,7 +42,44 @@ h3{
     margin: 0;
     padding: 0;
     color: #FFF;
-    font-family: 'Montserrat', sans-serif;
     font-size: 22px;
     font-weight: 400;
+}
+
+/* Category styling */
+.category-links{
+    height: 290px;
+    background-color: #404040;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+.category-links{
+    text-decoration: none;
+}
+
+.card{
+    justify-content: space-around;
+    width: 300px;
+    background-color: #404040;
+    color: #FFF;
+    border-radius: 0;
+    border-width: 2px;
+    border-color: #FFF;
+    border-bottom-width: 4px;
+    border-bottom-color: #FFCD19;
+}
+
+.card-title{
+    font-weight: 800;
+}
+
+.category-image{
+    width: 64px;
+}
+
+.category-image-constainer{
+    display: flex;
+    justify-content: end;
 }
