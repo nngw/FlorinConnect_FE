@@ -7,7 +7,7 @@ const createPosts = (data) => {
 	data.forEach(async (post) => {
 		const card = document.createElement('div');
 		card.classList.add('card', 'flex-row', 'mb-4');
-		card.setAttribute('style', 'min-height: 15rem; height: 100%; width: 635px;');
+		card.setAttribute('style', 'min-height: 15rem; height: 100%; width: 100%;');
 		// card.setAttribute('style', 'width: 49%');
 
 		const img = document.createElement('img');
@@ -19,12 +19,12 @@ const createPosts = (data) => {
 
 		const cardBody = document.createElement('div');
 		cardBody.className = 'card-body';
-		cardBody.setAttribute('style', 'width: 50%; min-height: 100%');
+		cardBody.setAttribute('style', 'width: 100%; min-height: 100%');
 		card.appendChild(cardBody);
 
 		const cardHeading = document.createElement('h5');
 		cardHeading.className = 'card-title';
-		cardHeading.textContent = post.title;
+		cardHeading.textContent = post.title + ' #' + post.id;
 		cardBody.appendChild(cardHeading);
 
 		const cardParagraph = document.createElement('p');
@@ -41,13 +41,6 @@ const createPosts = (data) => {
 
 		cardBody.appendChild(cardCreatedBy);
 
-		if (post.accepted) {
-			cardBody.setAttribute('style', 'border: solid 2px green');
-		}
-		if (post.completed) {
-			cardBody.setAttribute('style', 'border: solid 2px red');
-		}
-
 		const cardAcceptedBy = document.createElement('p');
 		cardAcceptedBy.className = 'card-text';
 		cardAcceptedBy.textContent = 'Accepted By: ' + (await getUserByUsername(post.accepted_by_id));
@@ -63,14 +56,34 @@ const createPosts = (data) => {
 		cardDateCreated.textContent = 'Date Created: ' + post.date_created;
 		cardBody.appendChild(cardDateCreated);
 
-		const cardButton = document.createElement('a');
-		cardButton.classList.add('btn', 'btn-primary');
-		cardButton.setAttribute('href', '../../index.html');
-		cardButton.innerHTML = 'Find out more';
-		cardBody.appendChild(cardButton);
+		const cardStatus = document.createElement('p');
+		cardStatus.className = 'card-text';
+		cardStatus.textContent = 'Status: ' + (await checkStatus(post));
+		cardBody.appendChild(cardStatus);
+
+		if (post.accepted) {
+			card.setAttribute('style', 'border-right: solid 10px green');
+		}
+		if (post.completed) {
+			card.setAttribute('style', 'border-right: solid 10px #a62639');
+		}
 
 		displayResults.appendChild(card);
 	});
+};
+
+const checkStatus = async (post) => {
+	let arr = [];
+	if (post.open) {
+		arr.push('Open');
+	}
+	if (post.accepted) {
+		arr.push('Accepted');
+	}
+	if (post.completed) {
+		arr.push('Completed');
+	}
+	return arr.join(', ');
 };
 
 const getUserByUsername = async (id) => {
