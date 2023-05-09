@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- favicon -->
-    <link rel="icon" href="./assets/images/logo.png" />
+
+    <link rel="icon" icon="image/x-icon" href="./assets/images/logo.ico">
+    
 
     <!-- bootstrap, google fonts -->
     <link
@@ -37,6 +39,7 @@
   </head>
 
   <body>
+    <!-- NavBar -->
     <nav class="navbar sticky-top navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
@@ -73,6 +76,143 @@
         </div>
       </div>
     </nav>
-    <h2>Hello</h2>
+
+    <!-- Category selector -->
+    <div class="container-fluid category-links">
+      <div class="row category-row">
+        <div class="col-sm-3">
+          <a class="category-links" href="#">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Recycling</h5>
+                <p class="card-text">See our recycling projects around the city.</p>
+                <div class="category-image-constainer">
+                  <img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/recycle-bin.png" alt="recycle-bin">
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-sm-3">
+          <a class="category-links" href="#">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Volunteer</h5>
+                <p class="card-text">Do you have skills to offer the city?</p>
+                <div class="category-image-constainer">
+                  <img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/volunteering.png" alt="colunteering">
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-sm-3">
+          <a class="category-links" href="#">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Workshop</h5>
+                <p class="card-text">Want to see that workshops are happening in the city?</p>
+                <div class="category-image-constainer">
+                  <img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/business.png" alt="workshops">
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-sm-3">
+          <a class="category-links" href="#">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Social</h5>
+                <p class="card-text">Come check out our social events.</p>
+                <div class="category-image-constainer">
+                  <img class="category-image" src="https://img.icons8.com/dotty/64/FFFFFF/group-task.png" alt="people socialising">
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Carousel -->
+    <div class="container carousel-container">
+      <div id="carouselExampleAutoplaying" class="carousel slide col-10" data-bs-ride="carousel">
+        <div class="carousel-inner carousel-images">
+          <div class="carousel-item active" data-bs-interval="3000">
+            <img src="./assets/images/forests.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="3000">
+            <img src="./assets/images/town.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="3000">
+            <img src="./assets/images/community.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="3000">
+            <img src="./assets/images/workshops.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="carouselExampleAutoplaying-text" class="carousel slide col-5" data-bs-ride="carousel">
+        
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+
+        <div class="carousel-inner carousel-text">
+          <div class="carousel-item active" data-bs-interval="3000">
+            <div class="container">
+              <h2>Hike through nature</h2><br>
+              <h3>Visit our historic forests and lose your self in nature.</h3><br>
+              <button type="button" class="btn carousel-button">Find out more</button>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="3000">
+            <div class="container">
+              <h2>Visit the town</h2><br>
+              <h3>Stroll through the town where there is always something on and support the local community.</h3><br>
+              <button type="button" class="btn carousel-button">Find out more</button>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="3000">
+            <div class="container">
+              <h2>Come join in</h2><br>
+              <h3>Join the local community and show your support to improve our beloved town.</h3><br>
+              <button type="button" class="btn carousel-button">Find out more</button>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="3000">
+            <div class="container">
+              <h2>Join exciting workshops</h2><br>
+              <h3>We have plenty of exciting workshops throughout the year. There is something for everyone here.</h3><br>
+              <button type="button" class="btn carousel-button">Find out more</button>
+            </div>
+            <div class="carousel-caption d-none d-md-block">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+
