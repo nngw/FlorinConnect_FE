@@ -135,7 +135,7 @@ a {
     text-decoration: none;
 }
 
-.card{
+.category-cards{
     justify-content: space-around;
     width: 300px;
     background-color: #404040;
@@ -147,7 +147,7 @@ a {
     border-bottom-color: #FFCD19;
 }
 
-.card-title{
+.category-card-title{
     font-weight: 800;
 }
 
@@ -161,7 +161,7 @@ a {
 }
 
 /* Carousel */
-.carousel{
+.homepage-carousel{
     margin: 20px 0px;
     display: flex;
 }
