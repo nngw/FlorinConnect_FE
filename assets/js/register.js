@@ -24,7 +24,7 @@
 //   console.log(document.body);
 // });
 
-const url = "https://florinconnectapi.onrender.com/users";
+const url = "https://florinconnectapi.onrender.com/users/";
 const localURL = "http://localhost:3000/users";
 //fetch then create new user
 fetch(url)
@@ -34,7 +34,7 @@ fetch(url)
   .then(createNewUser());
 
 const form = document.querySelector("#registerForm");
-form.addEventListener("submitButton", createNewUser);
+form.addEventListener("submit", createNewUser);
 
 //create new user function
 async function createNewUser(e) {
