@@ -1,14 +1,15 @@
 body{
     font-family: 'Montserrat', sans-serif;
+	background-color: #F8F8F8;
 }
 
 /* NavBar syling */
-.navbar{
-    padding: 0;
-    margin: 10;
-    background-color: #0A0A0A;
-    height: 82px;
-    width: 100%;
+.navbar {
+	padding: 0;
+	margin: 10;
+	background-color: #0A0A0A;
+	height: 82px;
+	width: 100%;
 }
 
 .navbar-logo {
@@ -19,8 +20,11 @@ body{
 
 .nav-link {
 	color: #fff;
-	font-family: 'Montserrat', sans-serif;
 }
+
+.nav-link:hover {
+	color: #FFCD19;
+	}
 
 #navbarNav {
 	justify-content: end;
@@ -31,14 +35,15 @@ h2 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
+	font-family: 'Montserrat', sans-serif;
 	font-weight: 600;
 }
-
 
 h3 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 22px;
 	font-weight: 300;
 }
@@ -195,4 +200,9 @@ a {
 .carousel-button{
     background-color: #A62639;
     color: #FFF;
+}
+
+.carousel-button:hover{
+    background-color: #A62639;
+    color: #FFCD19;
 }
