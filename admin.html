@@ -27,8 +27,10 @@
 
 		<!-- CSS styling -->
 		<link rel="stylesheet" href="./assets/css/styless.css" />
+		<link rel="stylesheet" href="./assets/css/admin.css" />
 
 		<title>FlorinConnect: Homepage</title>
+		<script src="./assets/js/admin.js" defer></script>
 	</head>
 
 	<body>
@@ -77,9 +79,9 @@
 		<section class="container">
 			<div class="grid-admin">
 				<div class="row gap-4">
-					<a href="#showPost" class="col card-admin">
-						<p class="text-card-admin">All posts</p>
-						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/add.png" />
+					<a href="#showPost" class="col card-admin" id="displayAllPosts">
+						<p class="text-card-admin">Display all posts</p>
+						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/select-all.png" />
 					</a>
 					<a href="#addPost" class="col card-admin">
 						<p class="text-card-admin">Add post</p>
@@ -87,14 +89,34 @@
 					</a>
 					<a href="#editPost" class="col card-admin">
 						<p class="text-card-admin">Edit post</p>
-						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/add.png" />
+						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/create-new.png" />
 					</a>
 					<a href="#deletePost" class="col card-admin">
 						<p class="text-card-admin">Delete post</p>
-						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/add.png" />
+						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/filled-trash.png" />
+					</a>
+				</div>
+				<div class="row gap-4 mt-4">
+					<a href="#editPostStatus" class="col card-admin">
+						<p class="text-card-admin">Edit post status</p>
+						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/ok.png" />
+					</a>
+					<a href="#showUsers" class="col card-admin" id="displayAllUsers">
+						<p class="text-card-admin">Display all users</p>
+						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/ios-glyphs/90/null/group.png" />
+					</a>
+					<a href="#addAdmin" class="col card-admin">
+						<p class="text-card-admin">Add admin</p>
+						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/settings.png" />
+					</a>
+					<a href="#removeUser" class="col card-admin">
+						<p class="text-card-admin">Remove user</p>
+						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/minus.png" />
 					</a>
 				</div>
 			</div>
+
+			<div id="displayResults" class="mt-5 container d-flex justify-content-between align-content-center flex-wrap"></div>
 		</section>
 	</body>
 </html>
