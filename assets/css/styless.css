@@ -159,3 +159,51 @@ h3 {
 .carousel-model-text{
 	padding: 20px 20px;
 }
+
+
+/* Boards page*/
+
+.navigation-strip {
+	height: 30px;
+	background-color: #a62639;
+	color: #fff;
+	display: flex;
+	/* justify-content: flex-start; */
+	align-items: center;
+}
+
+.navigation-strip-text {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	/* text-decoration: none; */
+}
+
+.navigation-strip-text div {
+	margin-right: 12px;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.posts-container{
+	padding-top: 10px;
+}
+
+.filter-selection{
+	text-align: center;
+}
+
+
+
+.filter-header:not(.collapse){
+	background-color: #404040;
+	color: #FFF;
+} 
+
+
+.filter-accordion-body{
+	/* background-color: #A62639; */
+}
