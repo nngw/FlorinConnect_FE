@@ -1,8 +1,8 @@
-/* NavBar syling */
 body{
     font-family: 'Montserrat', sans-serif;
 }
 
+/* NavBar syling */
 .navbar{
     padding: 0;
     margin: 10;
@@ -24,16 +24,13 @@ body{
 
 #navbarNav {
 	justify-content: end;
-	/* margin-right: 150px; */
 	width: 30%;
-
 }
 
 h2 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
-	font-family: 'Montserrat', sans-serif;
 	font-weight: 600;
 }
 
@@ -42,7 +39,6 @@ h3 {
 	margin: 0;
 	padding: 0;
 	color: #fff;
-	font-family: 'Montserrat', sans-serif;
 	font-size: 22px;
 	font-weight: 300;
 }
@@ -58,7 +54,6 @@ h3 {
 	background-color: #a62639;
 	color: #fff;
 	display: flex;
-	/* justify-content: flex-start; */
 	align-items: center;
 }
 .navigation-strip-text {
@@ -171,7 +166,6 @@ a {
     flex-wrap: wrap;
     align-items: center;
     position: relative;
-    /* height: 800px; */
 }
 
 #carouselExampleAutoplaying-text{
@@ -194,9 +188,7 @@ a {
 
 .carousel-text{
     display: flex;
-    /* justify-content: space-around; */
     align-items:center;
-    /* justify-content: center; */
     padding-left: 30px;
 }
 
