@@ -122,7 +122,6 @@ h3 {
 	height: 700px;
 }
 
-
 .carousel-text{
     display: flex;
     align-items:center;
@@ -210,11 +209,15 @@ a {
 	color: #fff;
 }
 
-.sticky-search-bar{
-	position: -webkit-sticky;
-	position: sticky;
-	top: 0;
+.stick-offset{
+	top:82px;
+}
 
-	display: block;
-	/* box-sizing: border-box;	 */
+.search-bar{
+	background-color: #404040;
+	border-radius: 10px;
+	padding: 10px;
+	color: #fff;
+	position: absolute;
+	top: 0px;
 }

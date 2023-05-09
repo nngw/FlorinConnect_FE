@@ -138,9 +138,9 @@
 
         <!-- Posts -->
         <div class="container posts-container">
-            <div class="row">
+            <div class="row sticky-top stick-offset">
                 <!-- Filter system -->
-                <div class="col col-3">
+                <div class="col col-3 search-bar">
                     <div class="accordion" id="accordionExample">
                         <h4 class="filter-selection">Filter posts</h4>
                         <div class="accordion-item">
@@ -243,12 +243,16 @@
                         <button id="clearAllFilters" class="btn clearFilters" type="button">Clear Filters</button>
                     </div>
                 </div>
+            </div>
 
+            <div class="row">
+                <div class="col col-3"></div>
                 <!-- Post section -->
-                <div class="col col-9" style="background-color: green">
+                <div class="col col-9">
                     <div id="search-results-date" class="mt-5 container d-flex justify-content-between align-content-center flex-wrap"></div>
                 </div>
             </div>
+            
         </div>
     </body>
 </html>
