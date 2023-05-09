@@ -1,14 +1,15 @@
 /* NavBar syling */
-body{
-    font-family: 'Montserrat', sans-serif;
+body {
+	font-family: 'Montserrat', sans-serif;
+	background-color: #f8f8f8;
 }
 
-.navbar{
-    padding: 0;
-    margin: 10;
-    background-color: #0A0A0A;
-    height: 82px;
-    width: 100%;
+.navbar {
+	padding: 0;
+	margin: 10;
+	background-color: #0a0a0a;
+	height: 82px;
+	width: 100%;
 }
 
 .navbar-logo {
@@ -26,7 +27,6 @@ body{
 	justify-content: end;
 	/* margin-right: 150px; */
 	width: 30%;
-
 }
 
 h2 {
@@ -37,7 +37,6 @@ h2 {
 	font-weight: 600;
 }
 
-
 h3 {
 	margin: 0;
 	padding: 0;
@@ -47,160 +46,85 @@ h3 {
 	font-weight: 300;
 }
 
-/* Admin page */
-.container-grey {
-	background-color: #404040;
-	height: 290px;
-}
-
-.navigation-strip {
-	height: 30px;
-	background-color: #a62639;
-	color: #fff;
-	display: flex;
-	/* justify-content: flex-start; */
-	align-items: center;
-}
-.navigation-strip-text {
-	width: 100%;
-	display: flex;
-	justify-content: flex-start;
-}
-
-.navigation-strip-text div {
-	margin-right: 12px;
-}
-
-a {
-	text-decoration: none;
-	color: #fff;
-}
-
-.container-admin {
-	height: -webkit-min-content;
-	height: -moz-min-content;
-	height: min-content;
-	width: 50%;
-	padding: 30px 60px;
-	border: solid 1px #fff;
-	color: #fff;
-	text-align: center;
-}
-
-.text-title-admin {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 30px;
-	text-transform: uppercase;
-}
-
-.text-admin {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 18px;
-	font-weight: 200;
-}
-.grid-admin {
-	margin-top: 40px;
-}
-.card-admin {
-	width: 100%;
-	height: 150px;
-	padding: 20px 20px;
-	border: solid 1px black;
-	position: relative;
-}
-.text-card-admin {
-	font-family: 'Montserrat', sans-serif;
-	font-size: 24px;
-	font-weight: 500;
-
-	color: black;
-}
-
-.card-admin-icon {
-	position: absolute;
-	bottom: 5px;
-	right: 5px;
-}
-
 /* Category styling */
-.category-links{
-    height: 290px;
-    background-color: #404040;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    }
-
-.category-links{
-    text-decoration: none;
+.category-links {
+	height: 290px;
+	background-color: #404040;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.card{
-    justify-content: space-around;
-    width: 300px;
-    background-color: #404040;
-    color: #FFF;
-    border-radius: 0;
-    border-width: 2px;
-    border-color: #FFF;
-    border-bottom-width: 4px;
-    border-bottom-color: #FFCD19;
+.category-links {
+	text-decoration: none;
 }
 
-.card-title{
-    font-weight: 800;
+.card {
+	justify-content: space-around;
+	width: 300px;
+	background-color: #404040;
+	color: #fff;
+	border-radius: 0;
+	border-width: 2px;
+	border-color: #fff;
+	border-bottom-width: 4px;
+	border-bottom-color: #ffcd19;
 }
 
-.category-image{
-    width: 64px;
+.card-title {
+	font-weight: 800;
 }
 
-.category-image-constainer{
-    display: flex;
-    justify-content: end;
+.category-image {
+	width: 64px;
+}
+
+.category-image-constainer {
+	display: flex;
+	justify-content: end;
 }
 
 /* Carousel */
-.carousel{
-    margin: 20px 0px;
-    display: flex;
+.carousel {
+	margin: 20px 0px;
+	display: flex;
 }
 
-.carousel-container{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    /* height: 800px; */
+.carousel-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	position: relative;
+	/* height: 800px; */
 }
 
-#carouselExampleAutoplaying-text{
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    justify-self: end;
-    right: 0px;
-    background-color: #0A0A0A;
-    height: 400px;
-    color: #FFF;
+#carouselExampleAutoplaying-text {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	justify-self: end;
+	right: 0px;
+	background-color: #0a0a0a;
+	height: 400px;
+	color: #fff;
 }
 
-.carousel-images{
-    display: flex;
-    align-items:center;
-    width: 100%;
-    height: 700px;
+.carousel-images {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 700px;
 }
 
-.carousel-text{
-    display: flex;
-    /* justify-content: space-around; */
-    align-items:center;
-    /* justify-content: center; */
-    padding-left: 30px;
+.carousel-text {
+	display: flex;
+	/* justify-content: space-around; */
+	align-items: center;
+	/* justify-content: center; */
+	padding-left: 30px;
 }
 
-.carousel-button{
-    background-color: #A62639;
-    color: #FFF;
+.carousel-button {
+	background-color: #a62639;
+	color: #fff;
 }
