@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+			crossorigin="anonymous" />
+		<script src="./assets/js/search.js" defer></script>
+		<title>Search</title>
+	</head>
+	<body>
+		<form id="search-form-date">
+			<label for="search-date">Search by date:</label>
+			<input type="text" id="search-date" name="q" placeholder="YYYY-MM-DD" />
+			<input type="submit" value="Search" />
+		</form>
+		<br />
+		<br />
+		<form id="search-form-between">
+			<label for="start-date">Start date:</label>
+			<input type="text" id="start-date" name="start" placeholder="YYYY-MM-DD" />
+			<label for="end-date">End date:</label>
+			<input type="text" id="end-date" name="end" placeholder="YYYY-MM-DD" />
+			<input type="submit" value="Search" />
+		</form>
+		<br /><br />
+		<form id="search-form-word">
+			<label for="word">Search by word:</label>
+			<input type="text" id="word" name="word" />
+			<input type="submit" value="Search" />
+		</form>
+		<br /><br />
+		<form id="search-form-category">
+			<label for="category">Search by category:</label>
+			<select name="category" id="category">
+				<option value=""></option>
+				<option value="Job">Job</option>
+				<option value="Volunteer">Volunteer</option>
+				<option value="Workshop">Workshop</option>
+				<option value="Social">Social</option>
+			</select>
+			<input type="submit" value="Search" />
+		</form>
+		<br /><br />
+		<form id="search-form-status">
+			<label for="status">Search by status:</label>
+			<select name="status" id="status">
+				<option value=""></option>
+				<option value="open">Open</option>
+				<option value="accepted">Accepted</option>
+				<option value="completed">Completed</option>
+			</select>
+			<input type="submit" value="Search" />
+		</form>
+
+		<div id="search-results-date" class="mt-5 container d-flex justify-content-between align-content-center flex-wrap"></div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+			crossorigin="anonymous"></script>
+	</body>
+</html>
