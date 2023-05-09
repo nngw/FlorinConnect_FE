@@ -1,0 +1,81 @@
+/* Admin page */
+.container-grey {
+	background-color: #404040;
+	height: 290px;
+}
+
+.navigation-strip {
+	height: 30px;
+	background-color: #a62639;
+	color: #fff;
+	display: flex;
+	/* justify-content: flex-start; */
+	align-items: center;
+}
+.navigation-strip-text {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.navigation-strip-text div {
+	margin-right: 12px;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.container-admin {
+	height: -webkit-min-content;
+	height: -moz-min-content;
+	height: min-content;
+	width: 50%;
+	padding: 30px 60px;
+	border: solid 1px #fff;
+	color: #fff;
+	text-align: center;
+}
+
+.text-title-admin {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 30px;
+	text-transform: uppercase;
+}
+
+.text-admin {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 200;
+}
+.grid-admin {
+	margin-top: 40px;
+	margin-bottom: 100px;
+}
+.card-admin {
+	width: 100%;
+	height: 150px;
+	padding: 20px 20px;
+	border: solid 1px black;
+	position: relative;
+	transition: 0.3s;
+}
+
+.card-admin:hover {
+	border: solid 1px #ffcd19;
+	background-color: #ededed;
+}
+.text-card-admin {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 24px;
+	font-weight: 500;
+
+	color: black;
+}
+
+.card-admin-icon {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
