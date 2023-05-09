@@ -24,8 +24,8 @@ body {
 }
 
 .nav-link:hover {
-	color: #FFCD19;
-	}
+	color: #ffcd19;
+}
 
 #navbarNav {
 	justify-content: end;
@@ -62,23 +62,21 @@ h3 {
 	text-decoration: none;
 }
 
-
-.category-cards{
-    justify-content: space-around;
-    width: 300px;
-    background-color: #404040;
-    color: #FFF;
-    border-radius: 0;
-    border-width: 2px;
-    border-color: #FFF;
-    border-bottom-width: 4px;
-    border-bottom-color: #FFCD19;
+.category-cards {
+	justify-content: space-around;
+	width: 300px;
+	background-color: #404040;
+	color: #fff;
+	border-radius: 0;
+	border-width: 2px;
+	border-color: #fff;
+	border-bottom-width: 4px;
+	border-bottom-color: #ffcd19;
 }
 
-.category-card-title{
-    font-weight: 800;
+.category-card-title {
+	font-weight: 800;
 }
-
 
 .category-image {
 	width: 64px;
@@ -101,7 +99,6 @@ h3 {
 	align-items: center;
 	position: relative;
 	/* height: 800px; */
-
 }
 
 #carouselExampleAutoplaying-text {
@@ -122,19 +119,18 @@ h3 {
 	height: 700px;
 }
 
+.carousel-text {
+	display: flex;
+	align-items: center;
+	padding-left: 30px;
 
-.carousel-text{
-    display: flex;
-    align-items:center;
-    padding-left: 30px;
+	.carousel-button {
+		background-color: #a62639;
+		color: #fff;
+	}
 
-
-.carousel-button {
-	background-color: #a62639;
-	color: #fff;
-}
-
-.carousel-button:hover{
-    background-color: #A62639;
-    color: #FFCD19;
+	.carousel-button:hover {
+		background-color: #a62639;
+		color: #ffcd19;
+	}
 }
