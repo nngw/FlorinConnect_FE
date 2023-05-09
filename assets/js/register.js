@@ -27,9 +27,9 @@
 const userURL = "https://florinconnectapi.onrender.com/users";
 const localUserURL = "http://localhost:3000/users";
 const tokensURL = "https://florinconnectapi.onrender.com/tokens";
-const localTokensURL = "http://localhost:3000/users";
+const localTokensURL = "http://localhost:3000/tokens";
 //fetch then create new user
-fetch(url)
+fetch(localUserURL)
   .then((response) => {
     return response.json();
   })
