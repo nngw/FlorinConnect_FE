@@ -54,6 +54,16 @@ const createPosts = (data) => {
 	});
 };
 
+addEventListener('load', async (e) => {
+	try {
+		const res = await fetch("http://localhost:3000/posts")
+		const posts = await res.json();
+		createPosts(posts)
+	} catch (error) {
+		console.error('error');
+	}
+})
+
 searchFormDate.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
