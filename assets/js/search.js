@@ -4,6 +4,7 @@ const searchFormBetween = document.getElementById('search-form-between');
 const searchFormWord = document.getElementById('search-form-word');
 const searchFormCategory = document.getElementById('search-form-category');
 const searchFormStatus = document.getElementById('search-form-status');
+const clearFilters = document.getElementById('clearAllFilters')
 
 const results = document.getElementById('search-results-date');
 
@@ -12,13 +13,14 @@ const createPosts = (data) => {
 	data.forEach((post) => {
 		const card = document.createElement('div');
 		card.classList.add('card', 'flex-row', 'mb-4');
-		card.setAttribute('style', 'min-height: 15rem; height: 100%; width: 635px;');
+		card.setAttribute('style', 'min-height: 15rem; height: 100%; width: 100%;');
 		// card.setAttribute('style', 'width: 49%');
 
 		const img = document.createElement('img');
 		img.className = 'card-img-top';
 		img.setAttribute('src', `${post.image_url}`);
-		img.setAttribute('style', 'width: 40%');
+		// img.setAttribute('style', 'width: 20%');
+		img.setAttribute('style', 'object-fit: cover; width: 20%; display: flex; align-items: center; justify-items: center;');
 		img.setAttribute('alt', 'Post image');
 		card.appendChild(img);
 
@@ -47,7 +49,7 @@ const createPosts = (data) => {
 		const cardButton = document.createElement('a');
 		cardButton.classList.add('btn', 'btn-primary');
 		cardButton.setAttribute('href', '../../index.html');
-		cardButton.innerHTML = 'Find out more';
+		cardButton.innerHTML = 'Accept';
 		cardBody.appendChild(cardButton);
 
 		results.appendChild(card);
@@ -130,3 +132,15 @@ searchFormStatus.addEventListener('submit', async (e) => {
 		console.error(error);
 	}
 });
+
+clearFilters.addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	try {
+		const res = await fetch("http://localhost:3000/posts")
+		const posts = await res.json();
+		createPosts(posts)
+	} catch (error) {
+		console.error('error');
+	}
+})

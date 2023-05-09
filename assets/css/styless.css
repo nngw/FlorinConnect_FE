@@ -168,7 +168,6 @@ h3 {
 	background-color: #a62639;
 	color: #fff;
 	display: flex;
-	/* justify-content: flex-start; */
 	align-items: center;
 }
 
@@ -176,7 +175,6 @@ h3 {
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
-	/* text-decoration: none; */
 }
 
 .navigation-strip-text div {
@@ -196,14 +194,27 @@ a {
 	text-align: center;
 }
 
-
-
 .filter-header:not(.collapse){
 	background-color: #404040;
 	color: #FFF;
 } 
 
+.clearFilters{
+	margin-top: 10px;
+	background-color: #FFCD19;
+	color: #0a0a0a;
+}
 
-.filter-accordion-body{
-	/* background-color: #A62639; */
+.clearFilters:hover{
+	background-color: #FFCD19;
+	color: #fff;
+}
+
+.sticky-search-bar{
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+
+	display: block;
+	/* box-sizing: border-box;	 */
 }
