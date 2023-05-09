@@ -2,6 +2,7 @@
 body{
     font-family: 'Montserrat', sans-serif;
 }
+
 .navbar{
     padding: 0;
     margin: 10;
@@ -10,40 +11,115 @@ body{
     width: 100%;
 }
 
-.navbar-logo{
-    margin: 0;
-    padding: 0;
-    width: 100%;
+.navbar-logo {
+	margin: 0;
+	padding: 0;
+	width: 100%;
 }
 
-.navbar-brand{
-    padding-left: 150px;
+.nav-link {
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
 }
 
-.nav-link{
-    color: #FFF;
-    margin-left: 30px;
+#navbarNav {
+	justify-content: end;
+	/* margin-right: 150px; */
+	width: 30%;
+
 }
 
-#navbarNav{
-    justify-content: end;
-    margin-right: 150px;
-    width: 30%;
+h2 {
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
 }
 
-h2{
-    margin: 0;
-    padding: 0;
-    color: #FFF;
-    font-weight: 800;
+
+h3 {
+	margin: 0;
+	padding: 0;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 22px;
+	font-weight: 300;
 }
 
-h3{
-    margin: 0;
-    padding: 0;
-    color: #FFF;
-    font-size: 22px;
-    font-weight: 400;
+/* Admin page */
+.container-grey {
+	background-color: #404040;
+	height: 290px;
+}
+
+.navigation-strip {
+	height: 30px;
+	background-color: #a62639;
+	color: #fff;
+	display: flex;
+	/* justify-content: flex-start; */
+	align-items: center;
+}
+.navigation-strip-text {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.navigation-strip-text div {
+	margin-right: 12px;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.container-admin {
+	height: -webkit-min-content;
+	height: -moz-min-content;
+	height: min-content;
+	width: 50%;
+	padding: 30px 60px;
+	border: solid 1px #fff;
+	color: #fff;
+	text-align: center;
+}
+
+.text-title-admin {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 30px;
+	text-transform: uppercase;
+}
+
+.text-admin {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 18px;
+	font-weight: 200;
+}
+.grid-admin {
+	margin-top: 40px;
+}
+.card-admin {
+	width: 100%;
+	height: 150px;
+	padding: 20px 20px;
+	border: solid 1px black;
+	position: relative;
+}
+.text-card-admin {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 24px;
+	font-weight: 500;
+
+	color: black;
+}
+
+.card-admin-icon {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
 }
 
 /* Category styling */
