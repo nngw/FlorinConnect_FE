@@ -99,6 +99,16 @@ const getUserByUsername = async (id) => {
 	}
 };
 
+const getPostById = async (id) => {
+	try {
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${id}`);
+		const post = await res.json();
+		return post;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 const display = displayAllPosts.addEventListener('click', async (e) => {
 	e.preventDefault();
 
@@ -111,6 +121,6 @@ const display = displayAllPosts.addEventListener('click', async (e) => {
 	}
 });
 
-module.exports = { display };
+module.exports = { display, createPosts, getPostById, getUserByUsername, checkStatus };
 
 // FormAddPostModal.addEventListener('submit', addPost());
