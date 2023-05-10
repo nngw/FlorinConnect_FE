@@ -75,6 +75,10 @@ h3 {
 	border-bottom-color: #ffcd19;
 }
 
+.category-cards:hover{
+	border-color: #a62639;
+}
+
 .category-card-title {
 	font-weight: 800;
 }
@@ -124,17 +128,18 @@ h3 {
 	display: flex;
 	align-items: center;
 	padding-left: 30px;
+}
 
-	.carousel-button {
+.carousel-button {
 		background-color: #a62639;
 		color: #fff;
-	}
+}
 
-	.carousel-button:hover {
+.carousel-button:hover {
 		background-color: #a62639;
 		color: #ffcd19;
-	}
 }
+
 
 .carousel-model-content{
 	background-color: #404040;
@@ -217,5 +222,20 @@ a {
 	padding: 10px;
 	color: #fff;
 	position: absolute;
-	top: 0px;
+	/* top: 0px; */
+}
+
+.post-task-button{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.status-task-buttons{
+	width: 100%;
+	margin-right: 5px;
+}
+
+.idStatusDisplay{
+	font-size: 0;
 }

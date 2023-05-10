@@ -372,6 +372,8 @@ const { editPostAdmin } = require('./assets/js/adminEditPost');
 const { showPostByIdAdmin, DeletePostModal } = require('./assets/js/adminDeletePost');
 const { showPostStatusAdmin, editPostStatusAdmin } = require('./assets/js/adminEditPostStatus');
 
+
+
 display;
 addPostAdmin;
 editPostAdmin;
@@ -379,5 +381,6 @@ showPostByIdAdmin;
 DeletePostModal;
 showPostStatusAdmin;
 editPostStatusAdmin;
+
 
 },{"./assets/js/admin":1,"./assets/js/adminAddPost":2,"./assets/js/adminDeletePost":3,"./assets/js/adminEditPost":4,"./assets/js/adminEditPostStatus":5}]},{},[6]);
