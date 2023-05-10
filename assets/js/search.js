@@ -18,7 +18,8 @@ const createPosts = (data) => {
 
 		const img = document.createElement('img');
 		img.className = 'card-img-top';
-		img.setAttribute('src', `${post.image_url}`);
+		const image_url = post.image_url || 'https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
+		img.setAttribute('src', `${image_url}`);
 		// img.setAttribute('style', 'width: 20%');
 		img.setAttribute('style', 'object-fit: cover; width: 20%; display: flex; align-items: center; justify-items: center;');
 		img.setAttribute('alt', 'Post image');
