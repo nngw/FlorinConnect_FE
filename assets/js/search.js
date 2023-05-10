@@ -67,7 +67,7 @@ const createUserPosts = (data) => {
 
 		const cardStatusDisplay = document.createElement('div');
 		cardStatusDisplay.className = 'card-footer';		
-
+		cardStatusDisplay.setAttribute('id', "clickedPostId")
 		const cardButton = document.createElement('a');
 
 		if (post.completed === true){
@@ -83,12 +83,22 @@ const createUserPosts = (data) => {
 			cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#7D84B2;');
 		} else if (post.open === true) {
 			cardButton.classList.add('btn', 'carousel-button', 'status-task-buttons');
-			cardButton.setAttribute('id', 'accept-button-click');
+			// cardButton.setAttribute('href', '../../index.html');
+			// cardButton.setAttribute('id', 'accept-button-click');
 			cardButton.innerHTML = 'Accept<br>task';
 			cardFooter.appendChild(cardButton);
 			cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#ED254E;');
+			cardStatusDisplay.textContent = post.id
+
+			cardButton.addEventListener('click', (e) => {
+				// var value = document.getElementById('clickedPostId')
+				// console.log(value)
+				// console.log(e.srcElement.offsetParent.innerText)
+				console.log(e.Element.offsetParent)
+				// console.log(e.srcElement.offsetParent.div)
+			})
 		}
-		// cardButton.setAttribute('style', 'display: ;');
+
 		card.appendChild(cardStatusDisplay);
 		
 		
@@ -232,6 +242,8 @@ filterWorkshopTaskClick.addEventListener('click', async (e) => {
 		console.error('error');
 	}
 })
+
+
 
 // module.exports = {
 // 	createUserPosts, populateAllPosts, searchByFormDates, searchByDateRange, searchByWord, searchByCategory, searchByStatus, clearAllFilters
