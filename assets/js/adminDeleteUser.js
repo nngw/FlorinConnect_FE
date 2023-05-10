@@ -32,8 +32,7 @@ const removeUserModal = FormDeleteUserModal.addEventListener('submit', async (e)
 		const userName = username.value;
 
 		const res = await fetch(`https://florinconnectapi.onrender.com/users/name/${userName}`, options);
-		// const user = await res.json();
-		// console.log(user);
+
 		if (res.status === 204) {
 			alert('User has been removed');
 			window.location.reload();
