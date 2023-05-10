@@ -1,6 +1,6 @@
 const FormAddPostModal = document.getElementById('FormAddPostModal');
 
-FormAddPostModal.addEventListener('submit', async (e) => {
+const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
 	const form = new FormData(e.target);
@@ -23,3 +23,5 @@ FormAddPostModal.addEventListener('submit', async (e) => {
 		console.error(error);
 	}
 });
+
+module.exports = { addPostAdmin };

@@ -21,12 +21,14 @@
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
 		<!-- CSS styling -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 		<link rel="stylesheet" href="./assets/css/styless.css" />
 		<link rel="stylesheet" href="./assets/css/admin.css" />
 
 		<title>FlorinConnect: Admin</title>
-		<script src="./assets/js/admin.js" defer></script>
-		<script src="./assets/js/adminAddPost.js" defer></script>
+		<script src="./bundle.js" defer></script>
+		<!-- <script src="./assets/js/admin.js" defer></script>
+		<script src="./assets/js/adminAddPost.js" defer></script> -->
 	</head>
 
 	<body>
@@ -75,37 +77,37 @@
 		<section class="container">
 			<div class="grid-admin">
 				<div class="row gap-4">
-					<a href="#addPost" class="col card-admin" id="displayAllPosts">
+					<a class="col card-admin" id="displayAllPosts">
 						<p class="text-card-admin">Display all posts</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/select-all.png" />
 					</a>
-					<a href="#addPost" class="col card-admin" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
+					<a class="col card-admin" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
 						<p class="text-card-admin">Add post</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/add.png" />
 					</a>
-					<a href="#editPost" class="col card-admin">
+					<a class="col card-admin">
 						<p class="text-card-admin">Edit post</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/create-new.png" />
 					</a>
-					<a href="#deletePost" class="col card-admin">
+					<a class="col card-admin">
 						<p class="text-card-admin">Delete post</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/filled-trash.png" />
 					</a>
 				</div>
 				<div class="row gap-4 mt-4">
-					<a href="#editPostStatus" class="col card-admin">
+					<a class="col card-admin">
 						<p class="text-card-admin">Edit post status</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/ok.png" />
 					</a>
-					<a href="#showUsers" class="col card-admin" id="displayAllUsers">
+					<a class="col card-admin" id="displayAllUsers">
 						<p class="text-card-admin">Display all users</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/ios-glyphs/90/null/group.png" />
 					</a>
-					<a href="#addAdmin" class="col card-admin">
+					<a class="col card-admin">
 						<p class="text-card-admin">Add admin</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/settings.png" />
 					</a>
-					<a href="#removeUser" class="col card-admin">
+					<a class="col card-admin">
 						<p class="text-card-admin">Remove user</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/minus.png" />
 					</a>
@@ -124,16 +126,16 @@
 						<form id="FormAddPostModal">
 							<div class="form-group">
 								<label for="title">Title</label>
-								<input type="text" name="title" class="form-control" id="title" placeholder="Title" />
+								<input type="text" name="title" class="form-control" id="title" placeholder="Title" required />
 							</div>
 
 							<div class="form-group">
 								<label for="content">Content</label>
-								<textarea class="form-control" name="content" id="content" rows="3"></textarea>
+								<textarea class="form-control" name="content" id="content" rows="3" required></textarea>
 							</div>
 							<div class="form-group">
 								<label for="category">Category</label>
-								<select class="form-control" name="category" id="category">
+								<select class="form-control" name="category" id="category" required>
 									<option value=""></option>
 									<option value="Job">Job</option>
 									<option value="Volunteer">Volunteer</option>
