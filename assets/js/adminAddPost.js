@@ -18,7 +18,15 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	};
 
 	try {
-		await fetch('https://florinconnectapi.onrender.com/posts', options);
+		const res = await fetch('https://florinconnectapi.onrender.com/posts', options);
+		const data = await res.json();
+
+		if (res.status == 201) {
+			alert('Post has been edited');
+			window.location.reload();
+		} else {
+			alert(data.error);
+		}
 	} catch (error) {
 		console.error(error);
 	}

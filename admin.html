@@ -81,21 +81,21 @@
 						<p class="text-card-admin">Display all posts</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/select-all.png" />
 					</a>
-					<a class="col card-admin" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
+					<a class="col card-admin" data-bs-toggle="modal" data-bs-target="#addPostModal">
 						<p class="text-card-admin">Add post</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/add.png" />
 					</a>
-					<a class="col card-admin">
+					<a class="col card-admin" data-bs-toggle="modal" data-bs-target="#editPostModal">
 						<p class="text-card-admin">Edit post</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/create-new.png" />
 					</a>
-					<a class="col card-admin">
+					<a class="col card-admin" data-bs-toggle="modal" data-bs-target="#deletePostModal">
 						<p class="text-card-admin">Delete post</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/filled-trash.png" />
 					</a>
 				</div>
 				<div class="row gap-4 mt-4">
-					<a class="col card-admin">
+					<a class="col card-admin" data-bs-toggle="modal" data-bs-target="#editPostStatusModal">
 						<p class="text-card-admin">Edit post status</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/ok.png" />
 					</a>
@@ -118,12 +118,13 @@
 		</section>
 		<!-- Large modal -->
 
+		<!-- ADD POST MODAL -->
 		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="addPostModal">
 			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="container d-flex flex-column align-items-center p-5">
 						<header class="modal-title text-center">Add post</header>
-						<form id="FormAddPostModal">
+						<form id="FormAddPostModal" class="form">
 							<div class="form-group">
 								<label for="title">Title</label>
 								<input type="text" name="title" class="form-control" id="title" placeholder="Title" required />
@@ -150,6 +151,102 @@
 							</div>
 
 							<input type="submit" class="btn btn-form" value="Add post" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- EDIT POST MODAL -->
+		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="editPostModal">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="container d-flex flex-column align-items-center p-5">
+						<header class="modal-title text-center">Edit post</header>
+						<form id="FormEditPostModal" class="form">
+							<div class="form-group">
+								<label for="id"># Post ID:</label>
+								<input type="number" name="id" class="form-control" id="id" required />
+							</div>
+							<div class="form-group">
+								<label for="title">Title</label>
+								<input type="text" name="title" class="form-control" id="title" placeholder="Title" />
+							</div>
+
+							<div class="form-group">
+								<label for="content">Content</label>
+								<textarea class="form-control" name="content" id="content" rows="3"></textarea>
+							</div>
+							<div class="form-group">
+								<label for="category">Category</label>
+								<select class="form-control" name="category" id="category">
+									<option value=""></option>
+									<option value="Job">Job</option>
+									<option value="Volunteer">Volunteer</option>
+									<option value="Workshop">Workshop</option>
+									<option value="Social">Social</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="photoAttachment">Add photo</label>
+								<br />
+								<input type="file" class="form-control btn" id="photoAttachment" />
+							</div>
+							<input type="submit" class="btn btn-form" value="Edit post" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- DELETE THE POST MODAL -->
+		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="deletePostModal">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="container d-flex flex-column align-items-center p-5">
+						<header class="modal-title text-center">Delete post</header>
+						<form id="FormDeletePostModal" class="form">
+							<div class="form-group">
+								<label for="id"># Post ID:</label>
+								<input type="number" name="id" class="form-control" id="idDelete" required />
+							</div>
+							<div id="showPosts" class="container"></div>
+
+							<div class="form-group btn-delete">
+								<button class="btn btn-form-delete" id="showAllBtn">Get the post</button>
+								<input type="submit" class="btn btn-form-delete" value="Delete" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- EDIT POST STATUS -->
+		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="editPostStatusModal">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="container d-flex flex-column align-items-center p-5">
+						<header class="modal-title text-center">Edit post status</header>
+						<form id="FormEditPostStatusModal" class="form">
+							<div class="form-group">
+								<label for="idEditStatus"># Post ID:</label>
+								<input type="number" name="id" class="form-control" id="idEditStatus" required />
+							</div>
+
+							<div id="showPostsEdit" class="container"></div>
+
+							<div class="form-group">
+								<div class="form-check form-switch">
+									<input class="form-check-input" value="true" name="completed" type="checkbox" id="completed" />
+									<label class="form-check-label" for="completed">Completed</label>
+								</div>
+							</div>
+
+							<div class="form-group btn-delete">
+								<button class="btn btn-form-delete" id="showPostBtn">Get the post</button>
+								<input type="submit" class="btn btn-form-delete" value="Edit status" />
+							</div>
 						</form>
 					</div>
 				</div>
