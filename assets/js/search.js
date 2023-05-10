@@ -98,7 +98,7 @@ searchFormWord.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
 	try {
-		const word = document.getElementById('word').value;
+		const word = document.getElementById('word').value.toLowerCase();
 		const res = await fetch(`http://localhost:3000/posts/word/${word}`);
 		const posts = await res.json();
 		createPosts(posts);
