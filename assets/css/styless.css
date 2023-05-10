@@ -222,7 +222,7 @@ a {
 	padding: 10px;
 	color: #fff;
 	position: absolute;
-	top: 0px;
+	/* top: 0px; */
 }
 
 .post-task-button{
@@ -236,6 +236,6 @@ a {
 	margin-right: 5px;
 }
 
-.card-footer-id{
-	visibility: none;
+.idStatusDisplay{
+	font-size: 0;
 }

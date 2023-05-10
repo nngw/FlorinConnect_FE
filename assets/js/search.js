@@ -1,3 +1,5 @@
+// const { create } = require("domain");
+
 // Get the form element and add an event listener for form submission
 const searchFormDate = document.getElementById('search-form-date');
 const searchFormBetween = document.getElementById('search-form-between');
@@ -69,39 +71,55 @@ const createUserPosts = (data) => {
 		cardStatusDisplay.className = 'card-footer';		
 		cardStatusDisplay.setAttribute('id', "clickedPostId")
 		const cardButton = document.createElement('a');
+		
+		const idStatusDisplay = document.createElement('p');
+		idStatusDisplay.setAttribute('class', 'idStatusDisplay')
+		idStatusDisplay.textContent = post.id
+		cardStatusDisplay.appendChild(idStatusDisplay)
+		
 
-		if (post.completed === true){
-			cardButton.classList.add('btn', 'carousel-button', 'status-task-buttons');
-			cardButton.innerHTML = 'Task<br>Completed';
-			cardFooter.appendChild(cardButton);	
+		if (post.completed === true){	
 			cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#94FBAB;');
 		} else if (post.accepted === true) {
-			cardButton.classList.add('btn', 'carousel-button', 'status-task-buttons');
-			// cardButton.setAttribute('href', '../../index.html');
+			cardButton.classList.add('btn', 'carousel-button'); 
 			cardButton.innerHTML = 'Mark as<br>completed';
 			cardFooter.appendChild(cardButton);
 			cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#7D84B2;');
 		} else if (post.open === true) {
 			cardButton.classList.add('btn', 'carousel-button', 'status-task-buttons');
-			// cardButton.setAttribute('href', '../../index.html');
-			// cardButton.setAttribute('id', 'accept-button-click');
 			cardButton.innerHTML = 'Accept<br>task';
 			cardFooter.appendChild(cardButton);
 			cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#ED254E;');
-			cardStatusDisplay.textContent = post.id
+		}
 
-			cardButton.addEventListener('click', (e) => {
-				// var value = document.getElementById('clickedPostId')
-				// console.log(value)
-				// console.log(e.srcElement.offsetParent.innerText)
-				console.log(e.Element.offsetParent)
-				// console.log(e.srcElement.offsetParent.div)
-			})
+		cardButton.addEventListener('click', async (e) => {
+			const id = getID(e.srcElement.offsetParent.innerText)
+			const options = {
+				method: 'PATCH',
+				headers: {
+				  Accept: 'application/json',
+				  'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({
+				  accepted: "true",
+				}),
+			  };
+
+			  try {
+				const res = await fetch(`http://localhost:3000/posts/changestatus/${id}`, options)
+				window.location.reload();
+				} catch (error) {
+				  console.error(error);
+				}
+		})
+
+		const getID = (text) => {
+			const array = text.split("\n");
+			const lastElement = array.pop();
+			return lastElement
 		}
 
 		card.appendChild(cardStatusDisplay);
-		
-		
 		results.appendChild(card);
 	});
 };
