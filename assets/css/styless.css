@@ -75,6 +75,10 @@ h3 {
 	border-bottom-color: #ffcd19;
 }
 
+.category-cards:hover{
+	border-color: #a62639;
+}
+
 .category-card-title {
 	font-weight: 800;
 }
@@ -228,5 +232,6 @@ a {
 }
 
 .status-task-buttons{
-	width: 90%;
+	width: 100%;
+	margin-right: 5px;
 }

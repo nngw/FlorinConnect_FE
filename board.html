@@ -21,6 +21,7 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
+    <!-- <script defer src="./bundle.js"></script> -->
     <script defer src="./assets/js/search.js"></script>
 
     <!-- Google fonts -->
@@ -33,7 +34,7 @@
 		<!-- CSS styling -->
 		<link rel="stylesheet" href="./assets/css/styless.css" />
 
-		<title>FlorinConnect: Homepage</title>
+		<title>FlorinConnect: Posts</title>
 	</head>
 
 	<body>
@@ -81,7 +82,7 @@
             <div class="row category-row">
                 <div class="col-sm-3">
                 <a class="category-links" href="#">
-                    <div class="card category-cards">
+                    <div class="card category-cards" id="recycling-cat-card">
                     <div class="card-body">
                         <h5 class="card-title category-card-title">Recycling</h5>
                         <p class="card-text">See our recycling projects around the city.</p>
@@ -95,7 +96,7 @@
 
                 <div class="col-sm-3">
                 <a class="category-links" href="#">
-                    <div class="card category-cards">
+                    <div class="card category-cards" id="volunteer-cat-card">
                     <div class="card-body">
                         <h5 class="card-title category-card-title">Volunteer</h5>
                         <p class="card-text">Do you have skills to offer the city?</p>
@@ -109,7 +110,7 @@
 
                 <div class="col-sm-3">
                 <a class="category-links" href="#">
-                    <div class="card category-cards">
+                    <div class="card category-cards" id="workshop-cat-card">
                     <div class="card-body">
                         <h5 class="card-title category-card-title">Workshop</h5>
                         <p class="card-text">Want to see that workshops are happening in the city?</p>
@@ -122,7 +123,7 @@
                 </div>
                 <div class="col-sm-3">
                 <a class="category-links" href="#">
-                    <div class="card category-cards">
+                    <div class="card category-cards" id="social-cat-card">
                     <div class="card-body">
                         <h5 class="card-title category-card-title">Social</h5>
                         <p class="card-text">Come check out our social events.</p>
@@ -244,14 +245,15 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row ">
                 <div class="col col-3"></div>
                 <!-- Post section -->
-                <div class="col col-9">
+                <div class="col col-9" >
                     <div id="search-results-date" class="mt-5 container d-flex justify-content-between align-content-center flex-wrap"></div>
                 </div>
             </div>
             
         </div>
+        
     </body>
 </html>
