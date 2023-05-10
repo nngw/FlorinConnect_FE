@@ -13,31 +13,31 @@ const createPosts = (data) => {
 	data.forEach((post) => {
 		const card = document.createElement('div');
 		card.classList.add('card', 'flex-row', 'mb-4');
-		card.setAttribute('style', 'min-height: 15rem; height: 100%; width: 100%;');
-		// card.setAttribute('style', 'width: 49%');
+		card.setAttribute('style', 'min-height: 200px; height: 100%; width: 100%; border: solid 2px #404040');
 
 		const img = document.createElement('img');
 		img.className = 'card-img-top';
-		img.setAttribute('src', `${post.image_url}`);
-		// img.setAttribute('style', 'width: 20%');
-		img.setAttribute('style', 'object-fit: cover; width: 20%; display: flex; align-items: center; justify-items: center;');
+		const image_url = post.image_url || 'https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
+		img.setAttribute('src', `${image_url}`);
+		img.setAttribute('style', 'object-fit: cover; width: 20%; height: 200px; display: flex; align-items: center; justify-items: center;');
 		img.setAttribute('alt', 'Post image');
 		card.appendChild(img);
 
 		const cardBody = document.createElement('div');
 		cardBody.className = 'card-body';
-		cardBody.setAttribute('style', 'width: 50%; min-height: 100%');
+		cardBody.setAttribute('style', 'width: 10%; min-height: 100%; background-color: #404040; color: #fff;');
 		card.appendChild(cardBody);
 
-		if (post.accepted) {
-			cardBody.setAttribute('style', 'background: green');
-		}
-		if (post.completed) {
-			cardBody.setAttribute('style', 'background: red');
-		}
+		// if (post.accepted) {
+		// 	cardBody.setAttribute('style', 'background: green');
+		// }
+		// if (post.completed) {
+		// 	cardBody.setAttribute('style', 'background: red');
+		// }
 
 		const cardHeading = document.createElement('h5');
 		cardHeading.className = 'card-title';
+		cardHeading.setAttribute('style', 'font-weight:600;')
 		cardHeading.textContent = post.title;
 		cardBody.appendChild(cardHeading);
 
@@ -56,7 +56,7 @@ const createPosts = (data) => {
 	});
 };
 
-addEventListener('load', async (e) => {
+window.addEventListener('load', async (e) => {
 	try {
 		const res = await fetch("http://localhost:3000/posts")
 		const posts = await res.json();
@@ -94,7 +94,7 @@ searchFormBetween.addEventListener('submit', async (e) => {
 	}
 });
 
-searchFormWord.addEventListener('submit', async (e) => {
+searchFormWord.addEventListener('input', async (e) => {
 	e.preventDefault();
 
 	try {
