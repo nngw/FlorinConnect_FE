@@ -84,11 +84,11 @@ a {
 /* MODALS */
 
 /* ADD POST */
-#FormAddPostModal {
+.form {
 	width: 80%;
 	position: relative;
 }
-#FormAddPostModal div {
+.form div {
 	margin-top: 15px;
 }
 label {
@@ -125,4 +125,23 @@ label {
 }
 a {
 	cursor: pointer;
+}
+
+/* DELETE */
+.btn-delete {
+	height: 100%;
+	position: relative;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+.btn-form-delete {
+	background-color: #a62639;
+	color: whitesmoke;
+	transition: 0.3s;
+	width: 160px;
+}
+.btn-form-delete:hover {
+	background-color: #a62639;
+	color: #ffcd19;
 }

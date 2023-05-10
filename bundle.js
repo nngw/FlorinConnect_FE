@@ -100,6 +100,16 @@ const getUserByUsername = async (id) => {
 	}
 };
 
+const getPostById = async (id) => {
+	try {
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${id}`);
+		const post = await res.json();
+		return post;
+	} catch (error) {
+		console.error(error);
+	}
+};
+
 const display = displayAllPosts.addEventListener('click', async (e) => {
 	e.preventDefault();
 
@@ -112,7 +122,7 @@ const display = displayAllPosts.addEventListener('click', async (e) => {
 	}
 });
 
-module.exports = { display };
+module.exports = { display, createPosts, getPostById, getUserByUsername, checkStatus };
 
 // FormAddPostModal.addEventListener('submit', addPost());
 
@@ -137,7 +147,15 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	};
 
 	try {
-		await fetch('https://florinconnectapi.onrender.com/posts', options);
+		const res = await fetch('https://florinconnectapi.onrender.com/posts', options);
+		const data = await res.json();
+
+		if (res.status == 201) {
+			alert('Post has been edited');
+			window.location.reload();
+		} else {
+			alert(data.error);
+		}
 	} catch (error) {
 		console.error(error);
 	}
@@ -146,10 +164,220 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 module.exports = { addPostAdmin };
 
 },{}],3:[function(require,module,exports){
+const showAllBtn = document.getElementById('showAllBtn');
+const FormDeletePostModal = document.getElementById('FormDeletePostModal');
+const id = document.getElementById('idDelete');
+const displayResults = document.getElementById('showPosts');
+
+const showPostByIdAdmin = showAllBtn.addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	try {
+		const postId = id.value;
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`);
+		const post = await res.json();
+		console.log(post);
+		createPost(post, displayResults);
+		// displayResults.appendChild(post);
+	} catch (error) {
+		alert(error);
+	}
+});
+
+const DeletePostModal = FormDeletePostModal.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	const options = {
+		method: 'DELETE',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+	};
+
+	try {
+		const postId = id.value;
+		console.log(postId);
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`, options);
+		const post = await res.json();
+
+		if (res.status == 200) {
+			alert('Post has been deleted');
+			window.location.reload();
+		} else {
+			alert(post.error);
+		}
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+const createPost = async (data, displayResults) => {
+	displayResults.innerHTML = '';
+
+	const card = document.createElement('div');
+	card.classList.add('card', 'flex-row', 'mb-4');
+	card.setAttribute('style', 'min-height: 10rem; height: 100%; width: 100%;');
+
+	const img = document.createElement('img');
+	img.className = 'card-img-top';
+	img.setAttribute('src', `${data.image_url}`);
+	img.setAttribute('style', 'width: 40%');
+	img.setAttribute('alt', 'Post image');
+	card.appendChild(img);
+
+	const cardBody = document.createElement('div');
+	cardBody.className = 'card-body';
+	cardBody.setAttribute('style', 'width: 100%; min-height: 100%');
+	card.appendChild(cardBody);
+
+	const cardHeading = document.createElement('h5');
+	cardHeading.className = 'card-title';
+	cardHeading.textContent = data.title + ' #' + data.id;
+	cardBody.appendChild(cardHeading);
+
+	const cardParagraph = document.createElement('p');
+	cardParagraph.className = 'card-text';
+	cardParagraph.textContent = data.content;
+	cardBody.appendChild(cardParagraph);
+
+	const cardDateCreated = document.createElement('p');
+	cardDateCreated.className = 'card-text';
+	cardDateCreated.textContent = 'Date Created: ' + data.date_created;
+	cardBody.appendChild(cardDateCreated);
+
+	if (data.accepted) {
+		card.setAttribute('style', 'border-right: solid 10px green');
+	}
+	if (data.completed) {
+		card.setAttribute('style', 'border-right: solid 10px #a62639');
+	}
+
+	displayResults.appendChild(card);
+};
+
+module.exports = { createPost, showPostByIdAdmin, DeletePostModal };
+
+},{}],4:[function(require,module,exports){
+// const { createPosts } = require('./admin');
+const FormEditPostModal = document.getElementById('FormEditPostModal');
+
+const editPostAdmin = FormEditPostModal.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	const postId = document.getElementById('id').value;
+
+	const form = new FormData(e.target);
+	const options = {
+		method: 'PATCH',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			title: form.get('title'),
+			content: form.get('content'),
+			category: form.get('category'),
+		}),
+	};
+
+	try {
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`, options);
+		if (res.status == 200) {
+			alert('Post has been added');
+			window.location.reload();
+		} else {
+			alert(data.error);
+		}
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+// const getPostById = async (id) => {
+// 	try {
+// 		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${id}`);
+// 		const post = await res.json();
+// 		return post.rows[0];
+// 	} catch (error) {
+// 		console.error(error);
+// 	}
+// };
+
+module.exports = { editPostAdmin };
+
+},{}],5:[function(require,module,exports){
+const { createPost, showPostByIdAdmin } = require('./adminDeletePost');
+
+const FormEditPostStatusModal = document.getElementById('FormEditPostStatusModal');
+const displayResults = document.getElementById('showPostsEdit');
+const showPostBtn = document.getElementById('showPostBtn');
+const id = document.getElementById('idEditStatus');
+
+const showPostStatusAdmin = showPostBtn.addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	try {
+		const postId = id.value;
+		console.log(postId);
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`);
+		const post = await res.json();
+		console.log(post);
+		createPost(post, displayResults);
+		// displayResults.appendChild(post);
+	} catch (error) {
+		alert(error);
+	}
+});
+
+const editPostStatusAdmin = FormEditPostStatusModal.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	const postId = document.getElementById('idEditStatus').value;
+
+	// const form = new FormData(e.target);
+	const options = {
+		method: 'PATCH',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			completed: document.getElementById('completed').checked,
+			open: 'false',
+			accepted: 'false',
+		}),
+	};
+
+	try {
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`, options);
+		// const data = await res.json();
+		if (res.status == 200) {
+			alert('Status has been updated');
+			window.location.reload();
+		} else {
+			alert(res.error);
+		}
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+module.exports = { showPostStatusAdmin, editPostStatusAdmin };
+
+},{"./adminDeletePost":3}],6:[function(require,module,exports){
 const { display } = require('./assets/js/admin');
 const { addPostAdmin } = require('./assets/js/adminAddPost');
+const { editPostAdmin } = require('./assets/js/adminEditPost');
+const { showPostByIdAdmin, DeletePostModal } = require('./assets/js/adminDeletePost');
+const { showPostStatusAdmin, editPostStatusAdmin } = require('./assets/js/adminEditPostStatus');
 
 display;
 addPostAdmin;
+editPostAdmin;
+showPostByIdAdmin;
+DeletePostModal;
+showPostStatusAdmin;
+editPostStatusAdmin;
 
-},{"./assets/js/admin":1,"./assets/js/adminAddPost":2}]},{},[3]);
+},{"./assets/js/admin":1,"./assets/js/adminAddPost":2,"./assets/js/adminDeletePost":3,"./assets/js/adminEditPost":4,"./assets/js/adminEditPostStatus":5}]},{},[6]);
