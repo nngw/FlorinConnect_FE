@@ -99,15 +99,16 @@
 						<p class="text-card-admin">Edit post status</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/ok.png" />
 					</a>
-					<a class="col card-admin" id="displayAllUsers">
+					<a class="col card-admin" id="displayAllUsers" data-bs-toggle="modal" data-bs-target="#allUsers">
 						<p class="text-card-admin">Display all users</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/ios-glyphs/90/null/group.png" />
 					</a>
-					<a class="col card-admin">
+					<a class="col card-admin" data-bs-toggle="modal" data-bs-target="#addAdmin">
 						<p class="text-card-admin">Add admin</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/settings.png" />
 					</a>
-					<a class="col card-admin">
+					<a class="col card-admin" data-bs-toggle="modal" data-bs-target="#deleteUser">
+						<p class="text-card-admin"></p>
 						<p class="text-card-admin">Remove user</p>
 						<img class="card-admin-icon" height="100px" src="https://img.icons8.com/dotty/80/null/minus.png" />
 					</a>
@@ -246,6 +247,73 @@
 							<div class="form-group btn-delete">
 								<button class="btn btn-form-delete" id="showPostBtn">Get the post</button>
 								<input type="submit" class="btn btn-form-delete" value="Edit status" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- DISPLAY ALL USERS -->
+		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="allUsers">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="container d-flex flex-column align-items-center p-5">
+						<header class="modal-title text-center">Users</header>
+
+						<div id="showUsers" class="container"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- ADD ADMIN -->
+		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="addAdmin">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="container d-flex flex-column align-items-center p-5">
+						<header class="modal-title text-center">Add admin</header>
+						<form id="FormAddAdmin" class="form">
+							<div class="form-group">
+								<label for="idAddAdmin"># User ID:</label>
+								<input type="number" name="id" class="form-control" id="idAddAdmin" required />
+							</div>
+
+							<div id="showUser" class="container"></div>
+
+							<div class="form-group">
+								<div class="form-check form-switch">
+									<input class="form-check-input" value="true" name="admin" type="checkbox" id="admin" />
+									<label class="form-check-label" for="admin">Admin</label>
+								</div>
+							</div>
+
+							<div class="form-group btn-delete">
+								<button class="btn btn-form-delete" id="showUserBtn">Get the user</button>
+								<input type="submit" class="btn btn-form-delete" value="Add admin" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- REMOVE THE USER MODAL -->
+		<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="deleteUser">
+			<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="container d-flex flex-column align-items-center p-5">
+						<header class="modal-title text-center">Remove user</header>
+						<form id="FormDeleteUserModal" class="form">
+							<div class="form-group">
+								<label for="username">Username:</label>
+								<input type="text" name="username" class="form-control" id="usernameDeleteUser" required />
+							</div>
+							<div id="showAllUsers" class="container"></div>
+
+							<div class="form-group btn-delete">
+								<button class="btn btn-form-delete" id="showAllUsersBtn">Get the user</button>
+								<input type="submit" class="btn btn-form-delete" value="Remove" />
 							</div>
 						</form>
 					</div>

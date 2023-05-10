@@ -3,6 +3,9 @@ const { addPostAdmin } = require('./assets/js/adminAddPost');
 const { editPostAdmin } = require('./assets/js/adminEditPost');
 const { showPostByIdAdmin, DeletePostModal } = require('./assets/js/adminDeletePost');
 const { showPostStatusAdmin, editPostStatusAdmin } = require('./assets/js/adminEditPostStatus');
+const { allUsers } = require('./assets/js/adminAllUsers');
+const { showUser, addAdmin } = require('./assets/js/adminAddAdmin');
+const { showUserById, removeUserModal } = require('./assets/js/adminDeleteUser');
 
 display;
 addPostAdmin;
@@ -11,3 +14,8 @@ showPostByIdAdmin;
 DeletePostModal;
 showPostStatusAdmin;
 editPostStatusAdmin;
+allUsers;
+showUser;
+addAdmin;
+showUserById;
+removeUserModal;

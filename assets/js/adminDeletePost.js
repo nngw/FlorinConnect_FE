@@ -10,7 +10,7 @@ const showPostByIdAdmin = showAllBtn.addEventListener('click', async (e) => {
 		const postId = id.value;
 		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`);
 		const post = await res.json();
-		console.log(post);
+
 		createPost(post, displayResults);
 		// displayResults.appendChild(post);
 	} catch (error) {
@@ -18,7 +18,7 @@ const showPostByIdAdmin = showAllBtn.addEventListener('click', async (e) => {
 	}
 });
 
-const DeletePostModal = FormDeletePostModal.addEventListener('submit', async (e) => {
+const deletePostModal = FormDeletePostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
 	const options = {
@@ -31,11 +31,11 @@ const DeletePostModal = FormDeletePostModal.addEventListener('submit', async (e)
 
 	try {
 		const postId = id.value;
-		console.log(postId);
+
 		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`, options);
 		const post = await res.json();
 
-		if (res.status == 200) {
+		if (res.status === 200) {
 			alert('Post has been deleted');
 			window.location.reload();
 		} else {
@@ -90,4 +90,4 @@ const createPost = async (data, displayResults) => {
 	displayResults.appendChild(card);
 };
 
-module.exports = { createPost, showPostByIdAdmin, DeletePostModal };
+module.exports = { createPost, showPostByIdAdmin, deletePostModal };
