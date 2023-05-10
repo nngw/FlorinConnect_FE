@@ -135,3 +135,87 @@ h3 {
 		color: #ffcd19;
 	}
 }
+
+.carousel-model-content{
+	background-color: #404040;
+	color: #fff;
+	}
+.carousel-model-title{
+	font-weight: 800;
+	color: #fff;
+}
+
+.carousel-model-image{
+	object-fit: cover;
+	width: 100%;
+	height: 500px;
+	display: flex;
+	align-items: center;
+}
+
+.carousel-model-text{
+	padding: 20px 20px;
+}
+
+
+/* Boards page*/
+
+.navigation-strip {
+	height: 30px;
+	background-color: #a62639;
+	color: #fff;
+	display: flex;
+	align-items: center;
+}
+
+.navigation-strip-text {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.navigation-strip-text div {
+	margin-right: 12px;
+}
+
+a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.posts-container{
+	padding-top: 10px;
+}
+
+.filter-selection{
+	text-align: center;
+}
+
+.filter-header:not(.collapse){
+	background-color: #404040;
+	color: #FFF;
+} 
+
+.clearFilters{
+	margin-top: 10px;
+	background-color: #FFCD19;
+	color: #0a0a0a;
+}
+
+.clearFilters:hover{
+	background-color: #FFCD19;
+	color: #fff;
+}
+
+.stick-offset{
+	top:82px;
+}
+
+.search-bar{
+	background-color: #404040;
+	border-radius: 10px;
+	padding: 10px;
+	color: #fff;
+	position: absolute;
+	top: 0px;
+}

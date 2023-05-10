@@ -24,10 +24,12 @@
 //   console.log(document.body);
 // });
 
-const url = "https://florinconnectapi.onrender.com/users/";
-const localURL = "http://localhost:3000/users";
+const userURL = "https://florinconnectapi.onrender.com/users";
+const localUserURL = "http://localhost:3000/users";
+const tokensURL = "https://florinconnectapi.onrender.com/tokens";
+const localTokensURL = "http://localhost:3000/tokens";
 //fetch then create new user
-fetch(url)
+fetch(localUserURL)
   .then((response) => {
     return response.json();
   })
@@ -55,9 +57,10 @@ async function createNewUser(e) {
   };
 
   //fetch and create new user response
-  const response = await fetch(url, options);
+  const userResponse = await fetch(localUserURL, options);
+  const tokenResponse = await fetch(localTokensURL, options);
   alert("new user created");
-  if (response.status == 201) {
+  if (userResponse.status == 201 && tokenResponse.status == 201) {
     e.target.username.value = "";
     e.target.password.value = "";
   }

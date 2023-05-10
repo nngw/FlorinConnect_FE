@@ -2,7 +2,7 @@ const form = document.querySelector("#loginForm");
 form.addEventListener("submitButton", loginUser);
 
 const url = "https://florinconnectapi.onrender.com/users";
-const localURL = "http://localhost:3000/users";
+const localURL = "http://localhost:3000/users/login";
 //fetch then create new user
 fetch(url)
   .then((response) => {
@@ -30,13 +30,10 @@ async function loginUser(e) {
   };
 
   //fetch and create new user response
-  const response = await fetch(
-    "https://florinconnectapi.onrender.com/users", // TODO: chaange accorgind to backend
-    options
-  );
+  const response = await fetch(localURL, options);
   alert("new user created");
-  if (response.status == 201) {
-    e.target.username.value = "";
-    e.target.password.value = "";
+  if (response.status == 204) {
+    location.href = "../index.html";
+    alert("successfully logged in");
   }
 }
