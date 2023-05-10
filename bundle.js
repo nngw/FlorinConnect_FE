@@ -1,3 +1,4 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 // const addPost = require('./adminAddPost');
 
 const displayResults = document.getElementById('displayResults');
@@ -114,3 +115,41 @@ const display = displayAllPosts.addEventListener('click', async (e) => {
 module.exports = { display };
 
 // FormAddPostModal.addEventListener('submit', addPost());
+
+},{}],2:[function(require,module,exports){
+const FormAddPostModal = document.getElementById('FormAddPostModal');
+
+const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	const form = new FormData(e.target);
+	const options = {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			title: form.get('title'),
+			content: form.get('content'),
+			category: form.get('category'),
+		}),
+	};
+
+	try {
+		await fetch('https://florinconnectapi.onrender.com/posts', options);
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+module.exports = { addPostAdmin };
+
+},{}],3:[function(require,module,exports){
+const { display } = require('./assets/js/admin');
+const { addPostAdmin } = require('./assets/js/adminAddPost');
+
+display;
+addPostAdmin;
+
+},{"./assets/js/admin":1,"./assets/js/adminAddPost":2}]},{},[3]);
