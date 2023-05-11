@@ -15,7 +15,9 @@ const results = document.getElementById('search-results-date');
 
 const createUserPosts = (data) => {
 	results.innerHTML = '';
-	data.forEach((post) => {
+	// console.log(data.length)
+	if (data.length){
+		data.forEach((post) => {
 		const card = document.createElement('div');
 		card.classList.add('card', 'flex-row', 'mb-4');
 		card.setAttribute('style', 'min-height: 300px; height: 100%; width: 100%; border: solid 2px #404040');
@@ -121,8 +123,54 @@ const createUserPosts = (data) => {
 
 		card.appendChild(cardStatusDisplay);
 		results.appendChild(card);
-	});
+		});
+	} else {
+		const card = document.createElement('div');
+		card.classList.add('card', 'flex-row', 'mb-4');
+		card.setAttribute('style', 'min-height: 300px; height: 100%; width: 100%; border: solid 2px #404040');
+
+		const img = document.createElement('img');
+		img.className = 'card-img-top';
+		const image_url = 'https://plus.unsplash.com/premium_photo-1661308250181-a7cb5935b92a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
+		img.setAttribute('src', `${image_url}`);
+		img.setAttribute('style', 'object-fit: cover; width: 50%; height: 300px; display: flex; align-items: center; justify-items: center;');
+		img.setAttribute('alt', 'Post image');
+		card.appendChild(img);
+
+		const cardBody = document.createElement('div');
+		cardBody.className = 'card-body';
+		cardBody.setAttribute('style', 'width: 100%; min-height: 100%; background-color: #eee; color: #fff;');
+		card.appendChild(cardBody);
+		
+		const cardHeading = document.createElement('h5');
+		cardHeading.className = 'card-title';
+		cardHeading.setAttribute('style', 'font-weight:800; color: #404040; text-align: center;')
+		cardHeading.textContent = 'Sorry we could not find those post';
+		cardBody.appendChild(cardHeading);
+
+		const cardParagraph = document.createElement('p');
+		cardParagraph.className = 'card-text';
+		cardParagraph.setAttribute('style', 'font-weight:800; color: #404040; text-align: center;')
+		cardParagraph.textContent = "Please refine your search criteria"
+		cardBody.appendChild(cardParagraph);
+
+		results.appendChild(card);
+	}
 };
+
+const createEmptyPosts = () => {
+	const card = document.createElement('div');
+	card.classList.add('card', 'flex-row', 'mb-4');
+	card.setAttribute('style', 'min-height: 300px; height: 100%; width: 100%; border: solid 2px #404040');
+
+	const img = document.createElement('img');
+		img.className = 'card-img-top';
+		const image_url = post.image_url || 'https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
+		img.setAttribute('src', `${image_url}`);
+		img.setAttribute('style', 'object-fit: cover; width: 20%; height: 300px; display: flex; align-items: center; justify-items: center;');
+		img.setAttribute('alt', 'Post image');
+		card.appendChild(img);
+}
 
 window.addEventListener('load', async (e) => {
 	try {
