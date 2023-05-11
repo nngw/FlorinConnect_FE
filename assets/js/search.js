@@ -1,6 +1,5 @@
-// const { create } = require("domain");
+// const { on } = require("events");
 
-// Get the form element and add an event listener for form submission
 const searchFormDate = document.getElementById('search-form-date');
 const searchFormBetween = document.getElementById('search-form-between');
 const searchFormWord = document.getElementById('search-form-word');
@@ -8,14 +7,14 @@ const searchFormCategory = document.getElementById('search-form-category');
 const searchFormStatus = document.getElementById('search-form-status');
 const clearFilters = document.getElementById('clearAllFilters');
 const filterVolunteerTaskClick = document.getElementById('volunteer-cat-card');
-const filterSocialTaskClick = document.getElementById('social-cat-card');const filterRecyclingTaskClick = document.getElementById('recycling-cat-card');
+const filterSocialTaskClick = document.getElementById('social-cat-card');
+const filterRecyclingTaskClick = document.getElementById('recycling-cat-card');
 const filterWorkshopTaskClick = document.getElementById('workshop-cat-card');
 
 const results = document.getElementById('search-results-date');
 
 const createUserPosts = (data) => {
 	results.innerHTML = '';
-	// console.log(data.length)
 	if (data.length){
 		data.forEach((post) => {
 		const card = document.createElement('div');
@@ -131,7 +130,7 @@ const createUserPosts = (data) => {
 
 		const img = document.createElement('img');
 		img.className = 'card-img-top';
-		const image_url = 'https://plus.unsplash.com/premium_photo-1661308250181-a7cb5935b92a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
+		const image_url = 'https://images.unsplash.com/photo-1505244783088-5a36f166e5b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80';
 		img.setAttribute('src', `${image_url}`);
 		img.setAttribute('style', 'object-fit: cover; width: 50%; height: 300px; display: flex; align-items: center; justify-items: center;');
 		img.setAttribute('alt', 'Post image');
@@ -145,7 +144,7 @@ const createUserPosts = (data) => {
 		const cardHeading = document.createElement('h5');
 		cardHeading.className = 'card-title';
 		cardHeading.setAttribute('style', 'font-weight:800; color: #404040; text-align: center;')
-		cardHeading.textContent = 'Sorry we could not find those post';
+		cardHeading.textContent = 'Sorry we could not find those posts';
 		cardBody.appendChild(cardHeading);
 
 		const cardParagraph = document.createElement('p');
@@ -158,29 +157,68 @@ const createUserPosts = (data) => {
 	}
 };
 
-const createEmptyPosts = () => {
-	const card = document.createElement('div');
-	card.classList.add('card', 'flex-row', 'mb-4');
-	card.setAttribute('style', 'min-height: 300px; height: 100%; width: 100%; border: solid 2px #404040');
-
-	const img = document.createElement('img');
-		img.className = 'card-img-top';
-		const image_url = post.image_url || 'https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
-		img.setAttribute('src', `${image_url}`);
-		img.setAttribute('style', 'object-fit: cover; width: 20%; height: 300px; display: flex; align-items: center; justify-items: center;');
-		img.setAttribute('alt', 'Post image');
-		card.appendChild(img);
+const queryString = window.location.search
+console.log(queryString);
+if(!queryString){
+	window.addEventListener('load', async (e) => {
+		try {
+			const res = await fetch("http://localhost:3000/posts")
+			const posts = await res.json();
+			createUserPosts(posts)
+		} catch (error) {
+			console.error('error');
+		}
+	})
+} else if (queryString === '?volunteer'){
+	async function onloadQuery () { 
+		try {
+			console.log('hello from try')
+			const res = await fetch("http://localhost:3000/posts/category/Volunteer")
+			const posts = await res.json();
+			createUserPosts(posts)
+		} catch (error) {
+			console.error('error');
+		}
+	}
+	onloadQuery()
+} else if (queryString === '?recycling') {
+	async function onloadQuery (){
+		try {
+			const res = await fetch("http://localhost:3000/posts/category/Job")
+			const posts = await res.json();
+			createUserPosts(posts)
+		} catch (error) {
+			console.error('error');
+		}
+	}
+	onloadQuery()
+} else if (queryString === '?social') {
+	async function onloadQuery (){
+		try {
+			const res = await fetch("http://localhost:3000/posts/category/Social")
+			const posts = await res.json();
+			createUserPosts(posts)
+		} catch (error) {
+			console.error('error');
+		}
+	}
+	onloadQuery()
+} else if (queryString === '?workshop') {
+	async function onloadQuery (){
+		try {
+			const res = await fetch("http://localhost:3000/posts/category/Workshop")
+			const posts = await res.json();
+			createUserPosts(posts)
+		} catch (error) {
+			console.error('error');
+		}
+	}
+	onloadQuery()
+} else {
+	createUserPosts(0)
 }
 
-window.addEventListener('load', async (e) => {
-	try {
-		const res = await fetch("http://localhost:3000/posts")
-		const posts = await res.json();
-		createUserPosts(posts)
-	} catch (error) {
-		console.error('error');
-	}
-})
+
 
 searchFormDate.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -310,7 +348,3 @@ filterWorkshopTaskClick.addEventListener('click', async (e) => {
 })
 
 
-
-// module.exports = {
-// 	createUserPosts, populateAllPosts, searchByFormDates, searchByDateRange, searchByWord, searchByCategory, searchByStatus, clearAllFilters
-// }
