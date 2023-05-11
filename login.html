@@ -24,7 +24,7 @@
 		<!-- Google fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;800&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
 		<!-- CSS styling -->
 		<script src="/assets/js/login.js" defer></script>
@@ -47,7 +47,7 @@
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="container-fluid">
+				<div class="container">
 					<h2>FlorinConnect</h2>
 					<h3>By Florin City Council</h3>
 				</div>
@@ -63,11 +63,11 @@
 				</div>
 			</div>
 		</nav>
-		<h1 class="text-center">Welcome to FlorinConnect</h1>
-		<div class="row border p-3 bg-body-secondary w-25 position-absolute top-50 start-50 translate-middle">
-			<form id="loginForm">
+		<h1 class="text-center mt-5">Welcome to FlorinConnect</h1>
+		<div class="row border p-3 bg-body-secondary w-25 position-absolute top-50 start-50 translate-middle mt-5">
+			<form id="loginForm" class="w-100 p-4 m-auto d-flex flex-column align-items-center">
+				<h2 class="mb-4 h2-black">Login</h2>
 				<fieldset class="mb-3 col-sm-8">
-					<h2>Login</h2>
 					<label for="username" class="form-label">Username:</label>
 					<input type="text" class="form-control" id="username" name="username" required />
 				</fieldset>
@@ -76,7 +76,7 @@
 					<input type="password" class="form-control" id="password" name="password" required />
 				</fieldset>
 
-				<input type="submit" class="btn carousel-button" id="loginButton" value="Login" />
+				<input type="submit" class="btn btn-red" id="loginButton" value="Login" />
 			</form>
 		</div>
 
