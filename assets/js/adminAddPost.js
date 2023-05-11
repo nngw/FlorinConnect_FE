@@ -1,4 +1,8 @@
+require('dotenv').config();
 const FormAddPostModal = document.getElementById('FormAddPostModal');
+
+const api_key = proces.env.CLOUDAPIKEY;
+const cloud_name = proces.env.CLOUDNAME;
 
 const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
