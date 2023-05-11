@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- favicon -->
-    <link rel="icon" icon="image/x-icon" href="./assets/images/logo.ico">
-    
-    <!-- bootstrap, google fonts -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-      crossorigin="anonymous"
-    ></script>
-    <!-- <script defer src="./bundle.js"></script> -->
-    <script defer src="./assets/js/search.js"></script>
+		<!-- favicon -->
+		<link rel="icon" icon="image/x-icon" href="./assets/images/logo.ico" />
 
-    <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;800&display=swap"
-      rel="stylesheet"/>
+		<!-- bootstrap, google fonts -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+			crossorigin="anonymous" />
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+			crossorigin="anonymous"></script>
+		<!-- <script defer src="./bundle.js"></script> -->
+		<script defer src="./assets/js/search.js"></script>
+
+		<!-- Google fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
 		<!-- CSS styling -->
 		<link rel="stylesheet" href="./assets/css/styless.css" />
@@ -38,38 +34,38 @@
 	</head>
 
 	<body>
-        <nav class="container-fluid navbar sticky-top navbar-expand-lg">
-            <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand" href="./index.html"><img src="./assets/images/logo.png" alt="FlorinConnect" width="70" height="70" /></a>
-                <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="container">
-                <h2>FlorinConnect</h2>
-                <h3>By Florin City Council</h3>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Admin</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Log out</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+		<nav class="container-fluid navbar sticky-top navbar-expand-lg">
+			<div class="container d-flex justify-content-between align-items-center">
+				<a class="navbar-brand" href="./index.html"><img src="./assets/images/logo.png" alt="FlorinConnect" width="70" height="70" /></a>
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarNav"
+					aria-controls="navbarNav"
+					aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="container">
+					<h2>FlorinConnect</h2>
+					<h3>By Florin City Council</h3>
+				</div>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="#">Admin</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Log out</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-        <!-- Navigation strip -->
-        <div class="container-fluid navigation-strip">
+		<!-- Navigation strip -->
+		<div class="container-fluid navigation-strip">
 			<div class="navigation-strip-text container">
 				<div><a href="./index.html">Home</a></div>
 				<div>></div>
@@ -77,184 +73,212 @@
 			</div>
 		</div>
 
-        <!-- Category selector -->
-        <div class="container-fluid category-links">
-            <div class="row category-row">
-                <div class="col-sm-3">
-                <a class="category-links" href="#">
-                    <div class="card category-cards" id="recycling-cat-card">
-                    <div class="card-body">
-                        <h5 class="card-title category-card-title">Recycling</h5>
-                        <p class="card-text">See our recycling projects around the city.</p>
-                        <div class="category-image-constainer">
-                        <img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/recycle-bin.png" alt="recycle-bin">
-                        </div>
-                    </div>
-                    </div>
-                </a>
-                </div>
+		<!-- Category selector -->
+		<div class="container-fluid category-links">
+			<div class="row category-row">
+				<div class="col-sm-3">
+					<a class="category-links" href="#">
+						<div class="card category-cards" id="recycling-cat-card">
+							<div class="card-body">
+								<h5 class="card-title category-card-title">Recycling</h5>
+								<p class="card-text">See our recycling projects around the city.</p>
+								<div class="category-image-constainer">
+									<img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/recycle-bin.png" alt="recycle-bin" />
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
 
-                <div class="col-sm-3">
-                <a class="category-links" href="#">
-                    <div class="card category-cards" id="volunteer-cat-card">
-                    <div class="card-body">
-                        <h5 class="card-title category-card-title">Volunteer</h5>
-                        <p class="card-text">Do you have skills to offer the city?</p>
-                        <div class="category-image-constainer">
-                        <img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/volunteering.png" alt="colunteering">
-                        </div>
-                    </div>
-                    </div>
-                </a>
-                </div>
+				<div class="col-sm-3">
+					<a class="category-links" href="#">
+						<div class="card category-cards" id="volunteer-cat-card">
+							<div class="card-body">
+								<h5 class="card-title category-card-title">Volunteer</h5>
+								<p class="card-text">Do you have skills to offer the city?</p>
+								<div class="category-image-constainer">
+									<img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/volunteering.png" alt="colunteering" />
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
 
-                <div class="col-sm-3">
-                <a class="category-links" href="#">
-                    <div class="card category-cards" id="workshop-cat-card">
-                    <div class="card-body">
-                        <h5 class="card-title category-card-title">Workshop</h5>
-                        <p class="card-text">Want to see that workshops are happening in the city?</p>
-                        <div class="category-image-constainer">
-                        <img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/business.png" alt="workshops">
-                        </div>
-                    </div>
-                    </div>
-                </a>
-                </div>
-                
-                <div class="col-sm-3">
-                <a class="category-links" href="#">
-                    <div class="card category-cards" id="social-cat-card">
-                    <div class="card-body">
-                        <h5 class="card-title category-card-title">Social</h5>
-                        <p class="card-text">Come check out our social events.</p>
-                        <div class="category-image-constainer">
-                        <img class="category-image" src="https://img.icons8.com/dotty/64/FFFFFF/group-task.png" alt="people socialising">
-                        </div>
-                    </div>
-                    </div>
-                </a>
-                </div>
-            </div>
-        </div>
+				<div class="col-sm-3">
+					<a class="category-links" href="#">
+						<div class="card category-cards" id="workshop-cat-card">
+							<div class="card-body">
+								<h5 class="card-title category-card-title">Workshop</h5>
+								<p class="card-text">Want to see that workshops are happening in the city?</p>
+								<div class="category-image-constainer">
+									<img class="category-image" src="https://img.icons8.com/wired/64/FFFFFF/business.png" alt="workshops" />
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
 
-        <!-- Posts -->
-        <div class="container posts-container">
-            <div class="row sticky-top stick-offset">
-                <!-- Filter system -->
-                <div class="col col-3 search-bar">
-                    <div class="accordion" id="accordionExample">
-                        <h4 class="filter-selection">Filter posts</h4>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                              By specific date:
-                            </button>
-                          </h2>
-                          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <form id="search-form-date">
-                                    <label for="search-date">Search by date:</label>
-                                    <input type="text" id="search-date" name="q" placeholder="YYYY-MM-DD" /><br>
-                                    <input type="submit" value="Search" />
-                                </form>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                              By date range:
-                            </button>
-                          </h2>
-                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <form id="search-form-between">
-                                    <label for="start-date">Start date:</label>
-                                    <input type="text" id="start-date" name="start" placeholder="YYYY-MM-DD" />
-                                    <label for="end-date">End date:</label>
-                                    <input type="text" id="end-date" name="end" placeholder="YYYY-MM-DD" /><br>
-                                    <input type="submit" value="Search" />
-                                </form>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                              By status:
-                            </button>
-                          </h2>
-                          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <form id="search-form-status">
-                                    <label for="status">Search by status:</label>
-                                    <select name="status" id="status">
-                                        <option value=""></option>
-                                        <option value="open">Open</option>
-                                        <option value="accepted">Accepted</option>
-                                        <option value="completed">Completed</option>
-                                    </select><br>
-                                    <input type="submit" value="Search" />
-                                </form>
-                            </div>
-                          </div>
-                        </div>
+				<div class="col-sm-3">
+					<a class="category-links" href="#">
+						<div class="card category-cards" id="social-cat-card">
+							<div class="card-body">
+								<h5 class="card-title category-card-title">Social</h5>
+								<p class="card-text">Come check out our social events.</p>
+								<div class="category-image-constainer">
+									<img class="category-image" src="https://img.icons8.com/dotty/64/FFFFFF/group-task.png" alt="people socialising" />
+								</div>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                              <button class="accordion-button collapsed filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                By category:
-                              </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-                              <div class="accordion-body">
-                                <form id="search-form-category">
-                                    <label for="category">Search by category:</label>
-                                    <select name="category" id="category">
-                                        <option value=""></option>
-                                        <option value="Job">Job</option>
-                                        <option value="Volunteer">Volunteer</option>
-                                        <option value="Workshop">Workshop</option>
-                                        <option value="Social">Social</option>
-                                    </select><br>
-                                    <input type="submit" value="Search" />
-                                </form>
-                              </div>
-                            </div>
-                        </div>
+		<!-- Posts -->
+		<div class="container posts-container">
+			<div class="row sticky-top stick-offset">
+				<!-- Filter system -->
+				<div class="col col-3 search-bar">
+					<div class="accordion" id="accordionExample">
+						<h4 class="filter-selection">Filter posts</h4>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingOne">
+								<button
+									class="accordion-button filter-header"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseOne"
+									aria-expanded="true"
+									aria-controls="collapseOne">
+									By specific date:
+								</button>
+							</h2>
+							<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<form id="search-form-date">
+										<label for="search-date">Search by date:</label>
+										<input type="text" id="search-date" name="q" placeholder="YYYY-MM-DD" /><br />
+										<input type="submit" value="Search" />
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingTwo">
+								<button
+									class="accordion-button collapsed filter-header"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseTwo"
+									aria-expanded="false"
+									aria-controls="collapseTwo">
+									By date range:
+								</button>
+							</h2>
+							<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<form id="search-form-between">
+										<label for="start-date">Start date:</label>
+										<input type="text" id="start-date" name="start" placeholder="YYYY-MM-DD" />
+										<label for="end-date">End date:</label>
+										<input type="text" id="end-date" name="end" placeholder="YYYY-MM-DD" /><br />
+										<input type="submit" value="Search" />
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingThree">
+								<button
+									class="accordion-button collapsed filter-header"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseThree"
+									aria-expanded="false"
+									aria-controls="collapseThree">
+									By status:
+								</button>
+							</h2>
+							<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<form id="search-form-status">
+										<label for="status">Search by status:</label>
+										<select name="status" id="status">
+											<option value=""></option>
+											<option value="open">Open</option>
+											<option value="accepted">Accepted</option>
+											<option value="completed">Completed</option></select
+										><br />
+										<input type="submit" value="Search" />
+									</form>
+								</div>
+							</div>
+						</div>
 
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFive">
-                              <button class="accordion-button collapsed filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                Containing the words:
-                              </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                              <div class="accordion-body">
-                                <form id="search-form-word">
-                                    <label for="word">Search by word:</label>
-                                    <input type="text" id="word" name="word" /><br>
-                                </form>
-                              </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button id="clearAllFilters" class="btn clearFilters" type="button">Clear Filters</button>
-                    </div>
-                </div>
-            </div>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingFour">
+								<button
+									class="accordion-button collapsed filter-header"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseFour"
+									aria-expanded="false"
+									aria-controls="collapseFour">
+									By category:
+								</button>
+							</h2>
+							<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<form id="search-form-category">
+										<label for="category">Search by category:</label>
+										<select name="category" id="category">
+											<option value=""></option>
+											<option value="Job">Job</option>
+											<option value="Volunteer">Volunteer</option>
+											<option value="Workshop">Workshop</option>
+											<option value="Social">Social</option></select
+										><br />
+										<input type="submit" value="Search" />
+									</form>
+								</div>
+							</div>
+						</div>
 
-            <div class="row ">
-                <div class="col col-3"></div>
-                <!-- Post section -->
-                <div class="col col-9" >
-                    <div id="search-results-date" class="mt-5 container d-flex justify-content-between align-content-center flex-wrap"></div>
-                </div>
-            </div>
-            
-        </div>
-        
-    </body>
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="headingFive">
+								<button
+									class="accordion-button collapsed filter-header"
+									type="button"
+									data-bs-toggle="collapse"
+									data-bs-target="#collapseFive"
+									aria-expanded="false"
+									aria-controls="collapseFive">
+									Containing the words:
+								</button>
+							</h2>
+							<div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+								<div class="accordion-body">
+									<form id="search-form-word">
+										<label for="word">Search by word:</label>
+										<input type="text" id="word" name="word" /><br />
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="d-grid gap-2 col-6 mx-auto">
+						<button id="clearAllFilters" class="btn clearFilters" type="button">Clear Filters</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col col-3"></div>
+				<!-- Post section -->
+				<div class="col col-9">
+					<div id="search-results-date" class="mt-5 container d-flex justify-content-between align-content-center flex-wrap"></div>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
