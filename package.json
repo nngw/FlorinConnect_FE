@@ -1,12 +1,23 @@
 {
-  "name": "florinconnect_fe",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+	"name": "florinconnect_fe",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "concurrently \"watchify index.js -o bundle.js\" \"live-server\""
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^16.0.3",
+		"node": "^20.1.0",
+		"toastify-js": "^1.12.0"
+	},
+	"devDependencies": {
+		"concurrently": "^8.0.1",
+		"live-server": "^1.1.0",
+		"watchify": "^4.0.0"
+	}
 }

@@ -12,6 +12,7 @@
 	/* justify-content: flex-start; */
 	align-items: center;
 }
+
 .navigation-strip-text {
 	width: 100%;
 	display: flex;
@@ -78,4 +79,69 @@ a {
 	position: absolute;
 	bottom: 5px;
 	right: 5px;
+}
+
+/* MODALS */
+
+/* ADD POST */
+.form {
+	width: 80%;
+	position: relative;
+}
+.form div {
+	margin-top: 15px;
+}
+label {
+	margin-bottom: 5px;
+}
+.form-control:focus {
+	box-sizing: border-box;
+	border-left: 4px solid #ffcd19;
+	box-shadow: none;
+}
+
+.modal-title {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.btn-form {
+	background-color: #a62639;
+	color: whitesmoke;
+	transition: 0.3s;
+	margin-top: 10px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.btn-form:hover {
+	background-color: #a62639;
+	color: whitesmoke;
+}
+
+#photoAttachment {
+	width: 300px;
+}
+a {
+	cursor: pointer;
+}
+
+/* DELETE */
+.btn-delete {
+	height: 100%;
+	position: relative;
+	height: 50px;
+	display: flex;
+	justify-content: space-between;
+}
+.btn-form-delete {
+	background-color: #a62639;
+	color: whitesmoke;
+	transition: 0.3s;
+	width: 160px;
+}
+.btn-form-delete:hover {
+	background-color: #a62639;
+	color: #ffcd19;
 }
