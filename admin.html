@@ -125,7 +125,7 @@
 				<div class="modal-content">
 					<div class="container d-flex flex-column align-items-center p-5">
 						<header class="modal-title text-center">Add post</header>
-						<form id="FormAddPostModal" class="form">
+						<form id="FormAddPostModal" class="form" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="title">Title</label>
 								<input type="text" name="title" class="form-control" id="title" placeholder="Title" required />
@@ -145,10 +145,11 @@
 									<option value="Social">Social</option>
 								</select>
 							</div>
+
 							<div class="form-group">
-								<label for="photoAttachment">Add photo</label>
+								<label for="image">Add photo</label>
 								<br />
-								<input type="file" class="form-control btn" id="photoAttachment" />
+								<input type="file" name="image" class="form-control btn" id="image" />
 							</div>
 
 							<input type="submit" class="btn btn-form" value="Add post" />
@@ -191,7 +192,7 @@
 							<div class="form-group">
 								<label for="photoAttachment">Add photo</label>
 								<br />
-								<input type="file" class="form-control btn" id="photoAttachment" />
+								<input type="file" class="form-control btn" name="image" id="photoAttachment" />
 							</div>
 							<input type="submit" class="btn btn-form" value="Edit post" />
 						</form>

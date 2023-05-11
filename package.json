@@ -16,7 +16,7 @@
 	},
 	"devDependencies": {
 		"concurrently": "^8.0.1",
-		"live-server": "^1.2.2",
+		"live-server": "^1.1.0",
 		"watchify": "^4.0.0"
 	}
 }
