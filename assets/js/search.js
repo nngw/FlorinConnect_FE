@@ -8,7 +8,8 @@ const searchFormCategory = document.getElementById('search-form-category');
 const searchFormStatus = document.getElementById('search-form-status');
 const clearFilters = document.getElementById('clearAllFilters');
 const filterVolunteerTaskClick = document.getElementById('volunteer-cat-card');
-const filterSocialTaskClick = document.getElementById('social-cat-card');const filterRecyclingTaskClick = document.getElementById('recycling-cat-card');
+const filterSocialTaskClick = document.getElementById('social-cat-card');
+const filterRecyclingTaskClick = document.getElementById('recycling-cat-card');
 const filterWorkshopTaskClick = document.getElementById('workshop-cat-card');
 
 const results = document.getElementById('search-results-date');
@@ -296,7 +297,3 @@ filterWorkshopTaskClick.addEventListener('click', async (e) => {
 })
 
 
-
-// module.exports = {
-// 	createUserPosts, populateAllPosts, searchByFormDates, searchByDateRange, searchByWord, searchByCategory, searchByStatus, clearAllFilters
-// }
