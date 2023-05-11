@@ -33,7 +33,7 @@ async function loginUser(e) {
   const response = await fetch(localURL, options);
   alert("new user created");
   if (response.status == 204) {
-    location.href = "../index.html";
+    window.location.href = "index.html";
     alert("successfully logged in");
   }
 }
