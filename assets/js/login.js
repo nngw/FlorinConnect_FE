@@ -1,8 +1,45 @@
-const form = document.querySelector("#loginForm");
-form.addEventListener("submitButton", loginUser);
+const loginForm = document.querySelector('#loginForm');
+loginForm.addEventListener('submit', async (e) => {
+	e.preventDefault();
 
-const url = "https://florinconnectapi.onrender.com/auth";
-const localURL = "http://localhost:3000/users";
+	//create user data json
+	const form = new FormData(e.target);
+
+	//create post for adding the data
+	const options = {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			username: form.get('username'),
+			password: form.get('password'),
+		}),
+	};
+
+	//fetch and create new user response
+	const response = await fetch('http://localhost:3000/users/login', options);
+	console.log(response);
+	const responseBody = await response.json();
+	if (response.status === 200) {
+		const token = responseBody.token;
+
+		localStorage.setItem('token', token);
+		alert('successfully logged in');
+
+		window.location.href = 'board.html';
+	} else {
+		console.log(responseBody.error);
+		alert('invalid username or password');
+	}
+
+	// if (response.status == 204) {
+	// 	window.location.href = 'board.html';
+	// 	alert('successfully logged in');
+	// }
+});
+
 //fetch then create new user
 
 // async function getURL() {
@@ -11,39 +48,11 @@ const localURL = "http://localhost:3000/users";
 //   console.log(data);
 // }
 
-fetch(localURL)
-  .then((response) => {
-    return response.json();
-  })
-  .then(loginUser);
+// fetch(localURL)
+// 	.then((response) => {
+// 		return response.json();
+// 	})
+// 	.then(loginUser);
 
 //create new user function
-async function loginUser(e) {
-  e.preventDefault();
-  console.log("entered login user");
-  //create user data json
-  console.log(e);
-  const data = {
-    username: e.target.username.value,
-    password: e.target.password.value,
-  };
-  console.log(data);
-  //create post for adding the data
-  //TODO: change accodring to backend
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // credential: "include",
-    body: JSON.stringify(data),
-  };
-
-  //fetch and create new user response
-  const response = await fetch(`${localURL}/login`, options);
-  alert("user found");
-  if (response.status == 204) {
-    window.location.href = "board.html";
-    alert("successfully logged in");
-  }
-}
+// async function loginUser
