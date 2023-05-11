@@ -122,6 +122,60 @@ const display = displayAllPosts.addEventListener('click', async (e) => {
 	}
 });
 
+document.getElementById('logout').addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	const token = localStorage.getItem('token');
+
+	const options = {
+		method: 'DELETE',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+	};
+
+	try {
+		const res = await fetch(`http://localhost:3000/tokens/delete/${token}`, options);
+
+		if (res.status === 204) {
+			localStorage.removeItem('token');
+			alert('Token has been removed');
+			window.location.href = 'index.html';
+		} else {
+			console.log('Error L 39');
+		}
+	} catch (error) {
+		console.log('Can not delete token from db - ADMIN');
+		console.error(error);
+	}
+});
+
+window.onload = async function (e) {
+	e.preventDefault();
+
+	const token = localStorage.getItem('token');
+	try {
+		const options = {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+		};
+		const res = await fetch(`http://localhost:3000/tokens/admin/${token}`, options);
+		const user = await res.json();
+		if (user.admin) {
+			document.getElementById('user-img').src = './assets/images/admin.png';
+		} else {
+			document.getElementById('user-img').src = './assets/images/user.png';
+		}
+	} catch (error) {
+		console.log('Can not find out if it is an admin');
+		console.error(error);
+	}
+};
+
 module.exports = { display, createPosts, getPostById, getUserByUsername, checkStatus };
 
 // FormAddPostModal.addEventListener('submit', addPost());
@@ -211,7 +265,6 @@ const createUser = async (data, results) => {
 module.exports = { showUser, addAdmin, createUser };
 
 },{}],3:[function(require,module,exports){
-
 const FormAddPostModal = document.getElementById('FormAddPostModal');
 
 CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ds8r4pvb0/upload';
@@ -243,7 +296,6 @@ fileUpload.addEventListener('change', (e) => {
 		})
 		.catch((err) => console.error(err));
 });
-
 
 const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -279,12 +331,9 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	}
 });
 
-
 module.exports = { addPostAdmin };
 
-
 },{}],4:[function(require,module,exports){
-
 const displayAllUsersBtn = document.getElementById('displayAllUsers');
 const showUsers = document.getElementById('showUsers');
 
@@ -469,7 +518,7 @@ const removeUserModal = FormDeleteUserModal.addEventListener('submit', async (e)
 
 		const res = await fetch(`https://florinconnectapi.onrender.com/users/name/${userName}`, options);
 
-		if (res.status === 204) {
+		if (res.status === 200) {
 			alert('User has been removed');
 			window.location.reload();
 		} else {
@@ -485,6 +534,36 @@ module.exports = { showUserById, removeUserModal };
 },{"./adminAddAdmin":2}],7:[function(require,module,exports){
 // const { createPosts } = require('./admin');
 const FormEditPostModal = document.getElementById('FormEditPostModal');
+
+CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ds8r4pvb0/upload';
+CLOUDINARY_UPLOAD_PRESET = 'n7vsyexp';
+
+const imgPreview = document.getElementById('img-preview');
+const fileUpload = document.getElementById('file-upload');
+
+let url = '';
+
+fileUpload.addEventListener('change', (e) => {
+	const file = e.target.files[0];
+	const formData = new FormData();
+	formData.append('file', file);
+	formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+	axios({
+		url: CLOUDINARY_URL,
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		data: formData,
+	})
+		.then((res) => {
+			imgPreview.src = res.data.secure_url;
+			url = res.data.secure_url;
+			return url;
+		})
+		.catch((err) => console.error(err));
+});
 
 const editPostAdmin = FormEditPostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -502,6 +581,7 @@ const editPostAdmin = FormEditPostModal.addEventListener('submit', async (e) => 
 			title: form.get('title'),
 			content: form.get('content'),
 			category: form.get('category'),
+			image_url: url,
 		}),
 	};
 
@@ -615,6 +695,4 @@ addAdmin;
 showUserById;
 removeUserModal;
 
-
 },{"./assets/js/admin":1,"./assets/js/adminAddAdmin":2,"./assets/js/adminAddPost":3,"./assets/js/adminAllUsers":4,"./assets/js/adminDeletePost":5,"./assets/js/adminDeleteUser":6,"./assets/js/adminEditPost":7,"./assets/js/adminEditPostStatus":8}]},{},[9]);
-

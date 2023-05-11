@@ -121,6 +121,60 @@ const display = displayAllPosts.addEventListener('click', async (e) => {
 	}
 });
 
+document.getElementById('logout').addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	const token = localStorage.getItem('token');
+
+	const options = {
+		method: 'DELETE',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+	};
+
+	try {
+		const res = await fetch(`http://localhost:3000/tokens/delete/${token}`, options);
+
+		if (res.status === 204) {
+			localStorage.removeItem('token');
+			alert('Token has been removed');
+			window.location.href = 'index.html';
+		} else {
+			console.log('Error L 39');
+		}
+	} catch (error) {
+		console.log('Can not delete token from db - ADMIN');
+		console.error(error);
+	}
+});
+
+window.onload = async function (e) {
+	e.preventDefault();
+
+	const token = localStorage.getItem('token');
+	try {
+		const options = {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+		};
+		const res = await fetch(`http://localhost:3000/tokens/admin/${token}`, options);
+		const user = await res.json();
+		if (user.admin) {
+			document.getElementById('user-img').src = './assets/images/admin.png';
+		} else {
+			document.getElementById('user-img').src = './assets/images/user.png';
+		}
+	} catch (error) {
+		console.log('Can not find out if it is an admin');
+		console.error(error);
+	}
+};
+
 module.exports = { display, createPosts, getPostById, getUserByUsername, checkStatus };
 
 // FormAddPostModal.addEventListener('submit', addPost());
