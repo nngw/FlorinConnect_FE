@@ -211,9 +211,37 @@ const createUser = async (data, results) => {
 module.exports = { showUser, addAdmin, createUser };
 
 },{}],3:[function(require,module,exports){
-const { FORMERR } = require('dns');
-
 const FormAddPostModal = document.getElementById('FormAddPostModal');
+
+CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ds8r4pvb0/upload';
+CLOUDINARY_UPLOAD_PRESET = 'n7vsyexp';
+
+const imgPreview = document.getElementById('img-preview');
+const fileUpload = document.getElementById('file-upload');
+
+let url = '';
+
+fileUpload.addEventListener('change', (e) => {
+	const file = e.target.files[0];
+	const formData = new FormData();
+	formData.append('file', file);
+	formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+	axios({
+		url: CLOUDINARY_URL,
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		data: formData,
+	})
+		.then((res) => {
+			imgPreview.src = res.data.secure_url;
+			url = res.data.secure_url;
+			return url;
+		})
+		.catch((err) => console.error(err));
+});
 
 const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -230,7 +258,7 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 			title: form.get('title'),
 			content: form.get('content'),
 			category: form.get('category'),
-			image_url: form.get('image'),
+			image_url: url,
 		}),
 	};
 
@@ -249,36 +277,9 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	}
 });
 
-CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ds8r4pvb0/upload';
-CLOUDINARY_UPLOAD_PRESET = 'n7vsyexp';
-
-const imgPreview = document.getElementById('img-preview');
-const fileUpload = document.getElementById('file-upload');
-
-const uploadImage = fileUpload.addEventListener('change', (e) => {
-	const file = e.target.files[0];
-	const formData = new FormData();
-	formData.append('file', file);
-	formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-
-	axios({
-		url: CLOUDINARY_URL,
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded',
-		},
-		data: formData,
-	})
-		.then((res) => {
-			console.log(res);
-			imgPreview.src = res.data.secure_url;
-		})
-		.catch((err) => console.error(err));
-});
-
 module.exports = { addPostAdmin };
 
-},{"dns":10}],4:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 const displayAllUsersBtn = document.getElementById('displayAllUsers');
 const showUsers = document.getElementById('showUsers');
 
@@ -609,6 +610,4 @@ addAdmin;
 showUserById;
 removeUserModal;
 
-},{"./assets/js/admin":1,"./assets/js/adminAddAdmin":2,"./assets/js/adminAddPost":3,"./assets/js/adminAllUsers":4,"./assets/js/adminDeletePost":5,"./assets/js/adminDeleteUser":6,"./assets/js/adminEditPost":7,"./assets/js/adminEditPostStatus":8}],10:[function(require,module,exports){
-
-},{}]},{},[9]);
+},{"./assets/js/admin":1,"./assets/js/adminAddAdmin":2,"./assets/js/adminAddPost":3,"./assets/js/adminAllUsers":4,"./assets/js/adminDeletePost":5,"./assets/js/adminDeleteUser":6,"./assets/js/adminEditPost":7,"./assets/js/adminEditPostStatus":8}]},{},[9]);
