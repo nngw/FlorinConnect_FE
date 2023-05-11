@@ -5,15 +5,21 @@ const userURL = "https://florinconnectapi.onrender.com/users";
 const localUserURL = "http://localhost:3000/users";
 
 //fetch then create new user
+// fetch(localUserURL)
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then(createNewUser());
+
 fetch(localUserURL)
   .then((response) => {
-    return response.json();
+    return console.log(response.json());
   })
-  .then(createNewUser());
-
+  .then(createNewUser);
 //create new user function
 async function createNewUser(e) {
   e.preventDefault();
+
   //create user data json
   const data = {
     username: e.target.username.value,
@@ -31,6 +37,7 @@ async function createNewUser(e) {
   const userResponse = await fetch(localUserURL, options);
   alert("new user created");
   if (userResponse.status == 201) {
+    window.location.href = "board.html";
     e.target.username.value = "";
     e.target.password.value = "";
   }
