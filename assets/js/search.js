@@ -158,20 +158,6 @@ const createUserPosts = (data) => {
 	}
 };
 
-const createEmptyPosts = () => {
-	const card = document.createElement('div');
-	card.classList.add('card', 'flex-row', 'mb-4');
-	card.setAttribute('style', 'min-height: 300px; height: 100%; width: 100%; border: solid 2px #404040');
-
-	const img = document.createElement('img');
-		img.className = 'card-img-top';
-		const image_url = post.image_url || 'https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
-		img.setAttribute('src', `${image_url}`);
-		img.setAttribute('style', 'object-fit: cover; width: 20%; height: 300px; display: flex; align-items: center; justify-items: center;');
-		img.setAttribute('alt', 'Post image');
-		card.appendChild(img);
-}
-
 window.addEventListener('load', async (e) => {
 	try {
 		const res = await fetch("http://localhost:3000/posts")
