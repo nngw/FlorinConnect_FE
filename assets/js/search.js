@@ -184,7 +184,7 @@ if(!queryString){
 } else if (queryString === '?recycling') {
 	async function onloadQuery (){
 		try {
-			const res = await fetch("http://localhost:3000/posts/category/Job")
+			const res = await fetch("http://localhost:3000/posts/category/Recycling")
 			const posts = await res.json();
 			createUserPosts(posts)
 		} catch (error) {
@@ -327,7 +327,7 @@ filterRecyclingTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch("http://localhost:3000/posts/category/Job")
+		const res = await fetch("http://localhost:3000/posts/category/Recycling")
 		const posts = await res.json();
 		createUserPosts(posts)
 	} catch (error) {
