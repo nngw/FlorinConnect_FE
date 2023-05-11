@@ -1,3 +1,4 @@
+
 const FormAddPostModal = document.getElementById('FormAddPostModal');
 
 CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ds8r4pvb0/upload';
@@ -29,6 +30,7 @@ fileUpload.addEventListener('change', (e) => {
 		})
 		.catch((err) => console.error(err));
 });
+
 
 const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -63,5 +65,6 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 		console.error(error);
 	}
 });
+
 
 module.exports = { addPostAdmin };

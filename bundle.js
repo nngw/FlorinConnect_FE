@@ -211,6 +211,7 @@ const createUser = async (data, results) => {
 module.exports = { showUser, addAdmin, createUser };
 
 },{}],3:[function(require,module,exports){
+
 const FormAddPostModal = document.getElementById('FormAddPostModal');
 
 CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ds8r4pvb0/upload';
@@ -242,6 +243,7 @@ fileUpload.addEventListener('change', (e) => {
 		})
 		.catch((err) => console.error(err));
 });
+
 
 const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -277,9 +279,12 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	}
 });
 
+
 module.exports = { addPostAdmin };
 
+
 },{}],4:[function(require,module,exports){
+
 const displayAllUsersBtn = document.getElementById('displayAllUsers');
 const showUsers = document.getElementById('showUsers');
 
@@ -610,4 +615,6 @@ addAdmin;
 showUserById;
 removeUserModal;
 
+
 },{"./assets/js/admin":1,"./assets/js/adminAddAdmin":2,"./assets/js/adminAddPost":3,"./assets/js/adminAllUsers":4,"./assets/js/adminDeletePost":5,"./assets/js/adminDeleteUser":6,"./assets/js/adminEditPost":7,"./assets/js/adminEditPostStatus":8}]},{},[9]);
+
