@@ -26,7 +26,6 @@ const editPostStatusAdmin = FormEditPostStatusModal.addEventListener('submit', a
 
 	const postId = document.getElementById('idEditStatus').value;
 
-	// const form = new FormData(e.target);
 	const options = {
 		method: 'PATCH',
 		headers: {

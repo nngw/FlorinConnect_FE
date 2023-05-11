@@ -127,12 +127,99 @@ module.exports = { display, createPosts, getPostById, getUserByUsername, checkSt
 // FormAddPostModal.addEventListener('submit', addPost());
 
 },{}],2:[function(require,module,exports){
+const FormAddAdmin = document.getElementById('FormAddAdmin');
+const displayResults = document.getElementById('showUser');
+const showUserBtn = document.getElementById('showUserBtn');
+const id = document.getElementById('idAddAdmin');
+
+const showUser = showUserBtn.addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	try {
+		const userId = id.value;
+		const res = await fetch(`https://florinconnectapi.onrender.com/users/${userId}`);
+		const user = await res.json();
+		createUser(user, displayResults);
+	} catch (error) {
+		alert(error);
+	}
+});
+
+const addAdmin = FormAddAdmin.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	const userId = id.value;
+
+	const options = {
+		method: 'PATCH',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			admin: document.getElementById('admin').checked,
+		}),
+	};
+
+	try {
+		const res = await fetch(`https://florinconnectapi.onrender.com/users/${userId}`, options);
+		if (res.status === 200) {
+			alert('Admin added');
+			window.location.reload();
+		} else {
+			alert(res.error);
+		}
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+const createUser = async (data, results) => {
+	results.innerHTML = '';
+
+	const card = document.createElement('div');
+	card.classList.add('card', 'flex-row', 'mb-4');
+	card.setAttribute('style', 'min-height: 10rem; height: 100%; width: 100%;');
+
+	const cardBody = document.createElement('div');
+	cardBody.className = 'card-body';
+	cardBody.setAttribute('style', 'width: 100%; min-height: 100%');
+	card.appendChild(cardBody);
+
+	const cardHeading = document.createElement('h5');
+	cardHeading.className = 'card-title';
+	cardHeading.textContent = data.username + ' #' + data.id;
+	cardBody.appendChild(cardHeading);
+
+	const cardParagraph = document.createElement('p');
+	cardParagraph.className = 'card-text';
+	cardParagraph.textContent = 'Admin: ' + data.admin;
+	cardBody.appendChild(cardParagraph);
+
+	if (data.admin) {
+		card.setAttribute('style', 'border-right: solid 10px green');
+	}
+
+	const cardDateCreated = document.createElement('p');
+	cardDateCreated.className = 'card-text';
+	cardDateCreated.textContent = 'Points: ' + data.points;
+	cardBody.appendChild(cardDateCreated);
+
+	results.appendChild(card);
+};
+
+module.exports = { showUser, addAdmin, createUser };
+
+},{}],3:[function(require,module,exports){
+const { FORMERR } = require('dns');
+
 const FormAddPostModal = document.getElementById('FormAddPostModal');
 
 const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
 	const form = new FormData(e.target);
+
 	const options = {
 		method: 'POST',
 		headers: {
@@ -143,6 +230,7 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 			title: form.get('title'),
 			content: form.get('content'),
 			category: form.get('category'),
+			image_url: form.get('image'),
 		}),
 	};
 
@@ -151,7 +239,7 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 		const data = await res.json();
 
 		if (res.status == 201) {
-			alert('Post has been edited');
+			alert('Post has been created');
 			window.location.reload();
 		} else {
 			alert(data.error);
@@ -161,9 +249,90 @@ const addPostAdmin = FormAddPostModal.addEventListener('submit', async (e) => {
 	}
 });
 
+CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ds8r4pvb0/upload';
+CLOUDINARY_UPLOAD_PRESET = 'n7vsyexp';
+
+const imgPreview = document.getElementById('img-preview');
+const fileUpload = document.getElementById('file-upload');
+
+const uploadImage = fileUpload.addEventListener('change', (e) => {
+	const file = e.target.files[0];
+	const formData = new FormData();
+	formData.append('file', file);
+	formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+	axios({
+		url: CLOUDINARY_URL,
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+		},
+		data: formData,
+	})
+		.then((res) => {
+			console.log(res);
+			imgPreview.src = res.data.secure_url;
+		})
+		.catch((err) => console.error(err));
+});
+
 module.exports = { addPostAdmin };
 
-},{}],3:[function(require,module,exports){
+},{"dns":10}],4:[function(require,module,exports){
+const displayAllUsersBtn = document.getElementById('displayAllUsers');
+const showUsers = document.getElementById('showUsers');
+
+const createUser = (data, results) => {
+	results.innerHTML = '';
+	data.forEach(async (data) => {
+		const card = document.createElement('div');
+		card.classList.add('card', 'flex-row', 'mb-4');
+		card.setAttribute('style', 'min-height: 10rem; height: 100%; width: 100%;');
+
+		const cardBody = document.createElement('div');
+		cardBody.className = 'card-body';
+		cardBody.setAttribute('style', 'width: 100%; min-height: 100%');
+		card.appendChild(cardBody);
+
+		const cardHeading = document.createElement('h5');
+		cardHeading.className = 'card-title';
+		cardHeading.textContent = data.username + ' #' + data.id;
+		cardBody.appendChild(cardHeading);
+
+		const cardParagraph = document.createElement('p');
+		cardParagraph.className = 'card-text';
+		cardParagraph.textContent = 'Admin: ' + data.admin;
+		cardBody.appendChild(cardParagraph);
+
+		if (data.admin) {
+			card.setAttribute('style', 'border-right: solid 10px green');
+		}
+
+		const cardDateCreated = document.createElement('p');
+		cardDateCreated.className = 'card-text';
+		cardDateCreated.textContent = 'Points: ' + data.points;
+		cardBody.appendChild(cardDateCreated);
+
+		results.appendChild(card);
+	});
+};
+
+const allUsers = displayAllUsersBtn.addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	try {
+		const res = await fetch('https://florinconnectapi.onrender.com/users');
+		const users = await res.json();
+		console.log(users);
+		createUser(users, showUsers);
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+module.exports = { allUsers, createUser };
+
+},{}],5:[function(require,module,exports){
 const showAllBtn = document.getElementById('showAllBtn');
 const FormDeletePostModal = document.getElementById('FormDeletePostModal');
 const id = document.getElementById('idDelete');
@@ -176,7 +345,7 @@ const showPostByIdAdmin = showAllBtn.addEventListener('click', async (e) => {
 		const postId = id.value;
 		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`);
 		const post = await res.json();
-		console.log(post);
+
 		createPost(post, displayResults);
 		// displayResults.appendChild(post);
 	} catch (error) {
@@ -184,7 +353,7 @@ const showPostByIdAdmin = showAllBtn.addEventListener('click', async (e) => {
 	}
 });
 
-const DeletePostModal = FormDeletePostModal.addEventListener('submit', async (e) => {
+const deletePostModal = FormDeletePostModal.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
 	const options = {
@@ -197,11 +366,11 @@ const DeletePostModal = FormDeletePostModal.addEventListener('submit', async (e)
 
 	try {
 		const postId = id.value;
-		console.log(postId);
+
 		const res = await fetch(`https://florinconnectapi.onrender.com/posts/${postId}`, options);
 		const post = await res.json();
 
-		if (res.status == 200) {
+		if (res.status === 200) {
 			alert('Post has been deleted');
 			window.location.reload();
 		} else {
@@ -256,9 +425,58 @@ const createPost = async (data, displayResults) => {
 	displayResults.appendChild(card);
 };
 
-module.exports = { createPost, showPostByIdAdmin, DeletePostModal };
+module.exports = { createPost, showPostByIdAdmin, deletePostModal };
 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
+const showAllUsersBtn = document.getElementById('showAllUsersBtn');
+const FormDeleteUserModal = document.getElementById('FormDeleteUserModal');
+const username = document.getElementById('usernameDeleteUser');
+const displayResults = document.getElementById('showAllUsers');
+const { createUser } = require('./adminAddAdmin');
+
+const showUserById = showAllUsersBtn.addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	try {
+		const userName = username.value;
+		const res = await fetch(`https://florinconnectapi.onrender.com/users/name/${userName}`);
+		const user = await res.json();
+		createUser(user, displayResults);
+	} catch (error) {
+		alert(error);
+	}
+});
+
+const removeUserModal = FormDeleteUserModal.addEventListener('submit', async (e) => {
+	e.preventDefault();
+
+	const options = {
+		method: 'DELETE',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+	};
+
+	try {
+		const userName = username.value;
+
+		const res = await fetch(`https://florinconnectapi.onrender.com/users/name/${userName}`, options);
+
+		if (res.status === 204) {
+			alert('User has been removed');
+			window.location.reload();
+		} else {
+			console.log('Error L 39');
+		}
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+module.exports = { showUserById, removeUserModal };
+
+},{"./adminAddAdmin":2}],7:[function(require,module,exports){
 // const { createPosts } = require('./admin');
 const FormEditPostModal = document.getElementById('FormEditPostModal');
 
@@ -306,7 +524,7 @@ const editPostAdmin = FormEditPostModal.addEventListener('submit', async (e) => 
 
 module.exports = { editPostAdmin };
 
-},{}],5:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 const { createPost, showPostByIdAdmin } = require('./adminDeletePost');
 
 const FormEditPostStatusModal = document.getElementById('FormEditPostStatusModal');
@@ -335,7 +553,6 @@ const editPostStatusAdmin = FormEditPostStatusModal.addEventListener('submit', a
 
 	const postId = document.getElementById('idEditStatus').value;
 
-	// const form = new FormData(e.target);
 	const options = {
 		method: 'PATCH',
 		headers: {
@@ -365,22 +582,33 @@ const editPostStatusAdmin = FormEditPostStatusModal.addEventListener('submit', a
 
 module.exports = { showPostStatusAdmin, editPostStatusAdmin };
 
-},{"./adminDeletePost":3}],6:[function(require,module,exports){
+},{"./adminDeletePost":5}],9:[function(require,module,exports){
 const { display } = require('./assets/js/admin');
 const { addPostAdmin } = require('./assets/js/adminAddPost');
 const { editPostAdmin } = require('./assets/js/adminEditPost');
-const { showPostByIdAdmin, DeletePostModal } = require('./assets/js/adminDeletePost');
+const { showPostByIdAdmin, deletePostModal } = require('./assets/js/adminDeletePost');
 const { showPostStatusAdmin, editPostStatusAdmin } = require('./assets/js/adminEditPostStatus');
+const { allUsers } = require('./assets/js/adminAllUsers');
+const { showUser, addAdmin } = require('./assets/js/adminAddAdmin');
+const { showUserById, removeUserModal } = require('./assets/js/adminDeleteUser');
 
-
+// const {
+// 	createUserPosts, populateAllPosts, searchByFormDates, searchByDateRange, searchByWord, searchByCategory, searchByStatus, clearAllFilters
+// } = require('./assets/js/search');
 
 display;
 addPostAdmin;
 editPostAdmin;
 showPostByIdAdmin;
-DeletePostModal;
+deletePostModal;
 showPostStatusAdmin;
 editPostStatusAdmin;
+allUsers;
+showUser;
+addAdmin;
+showUserById;
+removeUserModal;
 
+},{"./assets/js/admin":1,"./assets/js/adminAddAdmin":2,"./assets/js/adminAddPost":3,"./assets/js/adminAllUsers":4,"./assets/js/adminDeletePost":5,"./assets/js/adminDeleteUser":6,"./assets/js/adminEditPost":7,"./assets/js/adminEditPostStatus":8}],10:[function(require,module,exports){
 
-},{"./assets/js/admin":1,"./assets/js/adminAddPost":2,"./assets/js/adminDeletePost":3,"./assets/js/adminEditPost":4,"./assets/js/adminEditPostStatus":5}]},{},[6]);
+},{}]},{},[9]);

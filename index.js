@@ -1,8 +1,11 @@
 const { display } = require('./assets/js/admin');
 const { addPostAdmin } = require('./assets/js/adminAddPost');
 const { editPostAdmin } = require('./assets/js/adminEditPost');
-const { showPostByIdAdmin, DeletePostModal } = require('./assets/js/adminDeletePost');
+const { showPostByIdAdmin, deletePostModal } = require('./assets/js/adminDeletePost');
 const { showPostStatusAdmin, editPostStatusAdmin } = require('./assets/js/adminEditPostStatus');
+const { allUsers } = require('./assets/js/adminAllUsers');
+const { showUser, addAdmin } = require('./assets/js/adminAddAdmin');
+const { showUserById, removeUserModal } = require('./assets/js/adminDeleteUser');
 
 // const {
 // 	createUserPosts, populateAllPosts, searchByFormDates, searchByDateRange, searchByWord, searchByCategory, searchByStatus, clearAllFilters
@@ -12,7 +15,11 @@ display;
 addPostAdmin;
 editPostAdmin;
 showPostByIdAdmin;
-DeletePostModal;
+deletePostModal;
 showPostStatusAdmin;
 editPostStatusAdmin;
-
+allUsers;
+showUser;
+addAdmin;
+showUserById;
+removeUserModal;
