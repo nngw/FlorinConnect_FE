@@ -1,8 +1,46 @@
-const form = document.querySelector("#registerForm");
-form.addEventListener("submit", createNewUser);
+const form = document.querySelector('#registerForm');
+form.addEventListener('submit', async (e) => {
+	e.preventDefault();
 
-const userURL = "https://florinconnectapi.onrender.com/users";
-const localUserURL = "http://localhost:3000/users";
+	const form = new FormData(e.target);
+	//create user data json
+	// const data = {
+	// 	username: e.target.username.value,
+	// 	password: e.target.password.value,
+	// };
+	// console.log(data);
+	//create post for adding the data
+	const options = {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			username: form.get('username'),
+			password: form.get('password'),
+		}),
+	};
+
+	const response = await fetch('http://localhost:3000/users', options);
+	const responseBody = await response.json();
+
+	// const userResponse = await fetch(localUserURL, options);
+	// alert('new user created');
+
+	if (response.status === 201) {
+		// const token = responseBody.token;
+		// localStorage.setItem('token', token);
+		alert('new user created');
+
+		window.location.href = '/login.html';
+		e.target.username.value = '';
+		e.target.password.value = '';
+	}
+});
+
+// const userURL = 'https://florinconnectapi.onrender.com/users';
+// const localUserURL = 'http://localhost:3000/users';
 
 //fetch then create new user
 // fetch(localUserURL)
@@ -11,34 +49,10 @@ const localUserURL = "http://localhost:3000/users";
 //   })
 //   .then(createNewUser());
 
-fetch(localUserURL)
-  .then((response) => {
-    return console.log(response.json());
-  })
-  .then(createNewUser);
+// fetch(localUserURL)
+// 	.then((response) => {
+// 		return console.log(response.json());
+// 	})
+// 	.then(createNewUser);
 //create new user function
-async function createNewUser(e) {
-  e.preventDefault();
-
-  //create user data json
-  const data = {
-    username: e.target.username.value,
-    password: e.target.password.value,
-  };
-  console.log(data);
-  //create post for adding the data
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  };
-  const userResponse = await fetch(localUserURL, options);
-  alert("new user created");
-  if (userResponse.status == 201) {
-    window.location.href = "board.html";
-    e.target.username.value = "";
-    e.target.password.value = "";
-  }
-}
+// async function createNewUser
