@@ -134,116 +134,92 @@
 				</div>
 			</div>
 		</div>
+    
+        <!-- Posts -->
+        <div class="container posts-container">
+            <div class="row sticky-top stick-offset">
+                <!-- Filter system -->
+                <div class="col col-3 search-bar">
+                    <div class="accordion" id="accordionExample">
+                        <h4 class="filter-selection">Filter posts</h4>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              By specific date:
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form id="search-form-date">
+                                    <label for="search-date">Search by date:</label>
+                                    <input type="date"  id="search-date" name="q" placeholder="YYYY-MM-DD" /><br>
+                                    <input type="submit" value="Search" />
+                                </form>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              By date range:
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form id="search-form-between">
+                                    <label for="start-date">Start date:</label>
+                                    <input type="date" id="start-date" name="start" placeholder="YYYY-MM-DD" />
+                                    <label for="end-date">End date:</label>
+                                    <input type="date" id="end-date" name="end" placeholder="YYYY-MM-DD" /><br>
+                                    <input type="submit" value="Search" />
+                                </form>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              By status:
+                            </button>
+                          </h2>
+                          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form id="search-form-status">
+                                    <label for="status">Search by status:</label>
+                                    <select name="status" id="status">
+                                        <option value=""></option>
+                                        <option value="open">Open</option>
+                                        <option value="accepted">Accepted</option>
+                                        <option value="completed">Completed</option>
+                                    </select><br>
+                                    <input type="submit" value="Search" />
+                                </form>
+                            </div>
+                          </div>
+                        </div>
 
-		<!-- Posts -->
-		<div class="container posts-container">
-			<div class="row sticky-top stick-offset">
-				<!-- Filter system -->
-				<div class="col col-3 search-bar">
-					<div class="accordion" id="accordionExample">
-						<h4 class="filter-selection">Filter posts</h4>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="headingOne">
-								<button
-									class="accordion-button filter-header"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#collapseOne"
-									aria-expanded="true"
-									aria-controls="collapseOne">
-									By specific date:
-								</button>
-							</h2>
-							<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-								<div class="accordion-body">
-									<form id="search-form-date">
-										<label for="search-date">Search by date:</label>
-										<input type="text" id="search-date" name="q" placeholder="YYYY-MM-DD" /><br />
-										<input type="submit" value="Search" />
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="headingTwo">
-								<button
-									class="accordion-button collapsed filter-header"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#collapseTwo"
-									aria-expanded="false"
-									aria-controls="collapseTwo">
-									By date range:
-								</button>
-							</h2>
-							<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-								<div class="accordion-body">
-									<form id="search-form-between">
-										<label for="start-date">Start date:</label>
-										<input type="text" id="start-date" name="start" placeholder="YYYY-MM-DD" />
-										<label for="end-date">End date:</label>
-										<input type="text" id="end-date" name="end" placeholder="YYYY-MM-DD" /><br />
-										<input type="submit" value="Search" />
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="headingThree">
-								<button
-									class="accordion-button collapsed filter-header"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#collapseThree"
-									aria-expanded="false"
-									aria-controls="collapseThree">
-									By status:
-								</button>
-							</h2>
-							<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-								<div class="accordion-body">
-									<form id="search-form-status">
-										<label for="status">Search by status:</label>
-										<select name="status" id="status">
-											<option value=""></option>
-											<option value="open">Open</option>
-											<option value="accepted">Accepted</option>
-											<option value="completed">Completed</option></select
-										><br />
-										<input type="submit" value="Search" />
-									</form>
-								</div>
-							</div>
-						</div>
-
-						<div class="accordion-item">
-							<h2 class="accordion-header" id="headingFour">
-								<button
-									class="accordion-button collapsed filter-header"
-									type="button"
-									data-bs-toggle="collapse"
-									data-bs-target="#collapseFour"
-									aria-expanded="false"
-									aria-controls="collapseFour">
-									By category:
-								</button>
-							</h2>
-							<div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-								<div class="accordion-body">
-									<form id="search-form-category">
-										<label for="category">Search by category:</label>
-										<select name="category" id="category">
-											<option value=""></option>
-											<option value="Job">Job</option>
-											<option value="Volunteer">Volunteer</option>
-											<option value="Workshop">Workshop</option>
-											<option value="Social">Social</option></select
-										><br />
-										<input type="submit" value="Search" />
-									</form>
-								</div>
-							</div>
-						</div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                              <button class="accordion-button collapsed filter-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                By category:
+                              </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                              <div class="accordion-body">
+                                <form id="search-form-category">
+                                    <label for="category">Search by category:</label>
+                                    <select name="category" id="category">
+                                        <option value=""></option>
+                                        <option value="Recycling">Recycling</option>
+                                        <option value="Volunteer">Volunteer</option>
+                                        <option value="Workshop">Workshop</option>
+                                        <option value="Social">Social</option>
+                                    </select><br>
+                                    <input type="submit" value="Search" />
+                                </form>
+                              </div>
+                            </div>
+                        </div>
 
 						<div class="accordion-item">
 							<h2 class="accordion-header" id="headingFive">
