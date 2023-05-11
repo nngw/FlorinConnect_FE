@@ -7,6 +7,10 @@ const { allUsers } = require('./assets/js/adminAllUsers');
 const { showUser, addAdmin } = require('./assets/js/adminAddAdmin');
 const { showUserById, removeUserModal } = require('./assets/js/adminDeleteUser');
 
+// const {
+// 	createUserPosts, populateAllPosts, searchByFormDates, searchByDateRange, searchByWord, searchByCategory, searchByStatus, clearAllFilters
+// } = require('./assets/js/search');
+
 display;
 addPostAdmin;
 editPostAdmin;
