@@ -66,8 +66,8 @@ const createUserPosts = (data) => {
 			cardBody.appendChild(cardCreatedBy);
 
 			const cardFooter = document.createElement('div');
-			cardFooter.className = 'post-task-button btn-red';
-			cardFooter.setAttribute('style', 'color: #fff; border:none; position: absolute; bottom: 15px; right: 55px;');
+			cardFooter.className = 'post-task-button';
+			cardFooter.setAttribute('style', 'background-color: #404040; color: #fff; border:none; height: min-height;');
 			card.appendChild(cardFooter);
 
 			const cardStatusDisplay = document.createElement('div');
@@ -96,6 +96,7 @@ const createUserPosts = (data) => {
 
 			cardButton.addEventListener('click', async (e) => {
 				const id = getID(e.srcElement.offsetParent.innerText);
+				console.log(id);
 				const options = {
 					method: 'PATCH',
 					headers: {
@@ -109,6 +110,7 @@ const createUserPosts = (data) => {
 
 				try {
 					const res = await fetch(`https://florinconnectapi.onrender.com/posts/changestatus/${id}`, options);
+					console.log(res);
 					window.location.reload();
 				} catch (error) {
 					console.error(error);
@@ -117,6 +119,7 @@ const createUserPosts = (data) => {
 
 			const getID = (text) => {
 				const array = text.split('\n');
+				console.log(array);
 				const lastElement = array.pop();
 				return lastElement;
 			};
@@ -160,7 +163,7 @@ const createUserPosts = (data) => {
 };
 
 const queryString = window.location.search;
-console.log(queryString);
+
 if (!queryString) {
 	window.addEventListener('load', async (e) => {
 		try {
