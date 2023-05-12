@@ -19,7 +19,7 @@ loginForm.addEventListener('submit', async (e) => {
 	};
 
 	//fetch and create new user response
-	const response = await fetch('http://localhost:3000/users/login', options);
+	const response = await fetch('https://florinconnectapi.onrender.com/users/login', options);
 	console.log(response);
 	const responseBody = await response.json();
 	if (response.status === 200) {
