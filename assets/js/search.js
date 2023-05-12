@@ -27,13 +27,13 @@ const createUserPosts = (data) => {
 				post.image_url ||
 				'https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
 			img.setAttribute('src', `${image_url}`);
-			img.setAttribute('style', 'object-fit: cover; width: 20%; height: 300px; display: flex; align-items: center; justify-items: center;');
+			img.setAttribute('style', 'width: 35%');
 			img.setAttribute('alt', 'Post image');
 			card.appendChild(img);
 
 			const cardBody = document.createElement('div');
 			cardBody.className = 'card-body';
-			cardBody.setAttribute('style', 'width: 100%; min-height: 100%; background-color: #404040; color: #fff;');
+			cardBody.setAttribute('style', 'width: 100%; min-height: 100%; background-color: #404040; color: #fff; position: relative;');
 			card.appendChild(cardBody);
 
 			const cardHeading = document.createElement('h5');
@@ -66,8 +66,8 @@ const createUserPosts = (data) => {
 			cardBody.appendChild(cardCreatedBy);
 
 			const cardFooter = document.createElement('div');
-			cardFooter.className = 'post-task-button';
-			cardFooter.setAttribute('style', 'width: 20%; min-height: 100%; background-color: #404040; color: #fff; border-radius:0px;');
+			cardFooter.className = 'post-task-button btn-red';
+			cardFooter.setAttribute('style', 'color: #fff; border:none; position: absolute; bottom: 15px; right: 55px;');
 			card.appendChild(cardFooter);
 
 			const cardStatusDisplay = document.createElement('div');
@@ -81,17 +81,17 @@ const createUserPosts = (data) => {
 			cardStatusDisplay.appendChild(idStatusDisplay);
 
 			if (post.completed === true) {
-				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#94FBAB;');
+				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#a62639;');
 			} else if (post.accepted === true) {
 				cardButton.classList.add('btn', 'carousel-button');
 				cardButton.innerHTML = 'Mark as<br>completed';
 				cardFooter.appendChild(cardButton);
-				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#7D84B2;');
+				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color: green;');
 			} else if (post.open === true) {
 				cardButton.classList.add('btn', 'carousel-button', 'status-task-buttons');
 				cardButton.innerHTML = 'Accept<br>task';
 				cardFooter.appendChild(cardButton);
-				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#ED254E;');
+				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#FFCD19;');
 			}
 
 			cardButton.addEventListener('click', async (e) => {
@@ -108,7 +108,7 @@ const createUserPosts = (data) => {
 				};
 
 				try {
-					const res = await fetch(`http://localhost:3000/posts/changestatus/${id}`, options);
+					const res = await fetch(`https://florinconnectapi.onrender.com/posts/changestatus/${id}`, options);
 					window.location.reload();
 				} catch (error) {
 					console.error(error);
@@ -164,7 +164,7 @@ console.log(queryString);
 if (!queryString) {
 	window.addEventListener('load', async (e) => {
 		try {
-			const res = await fetch('http://localhost:3000/posts');
+			const res = await fetch('https://florinconnectapi.onrender.com/posts');
 			const posts = await res.json();
 			createUserPosts(posts);
 		} catch (error) {
@@ -175,7 +175,7 @@ if (!queryString) {
 	async function onloadQuery() {
 		try {
 			console.log('hello from try');
-			const res = await fetch('http://localhost:3000/posts/category/Volunteer');
+			const res = await fetch('https://florinconnectapi.onrender.com/posts/category/Volunteer');
 			const posts = await res.json();
 			createUserPosts(posts);
 		} catch (error) {
@@ -186,7 +186,7 @@ if (!queryString) {
 } else if (queryString === '?recycling') {
 	async function onloadQuery() {
 		try {
-			const res = await fetch('http://localhost:3000/posts/category/Recycling');
+			const res = await fetch('https://florinconnectapi.onrender.com/posts/category/Recycling');
 			const posts = await res.json();
 			createUserPosts(posts);
 		} catch (error) {
@@ -197,7 +197,7 @@ if (!queryString) {
 } else if (queryString === '?social') {
 	async function onloadQuery() {
 		try {
-			const res = await fetch('http://localhost:3000/posts/category/Social');
+			const res = await fetch('https://florinconnectapi.onrender.com/posts/category/Social');
 			const posts = await res.json();
 			createUserPosts(posts);
 		} catch (error) {
@@ -208,7 +208,7 @@ if (!queryString) {
 } else if (queryString === '?workshop') {
 	async function onloadQuery() {
 		try {
-			const res = await fetch('http://localhost:3000/posts/category/Workshop');
+			const res = await fetch('https://florinconnectapi.onrender.com/posts/category/Workshop');
 			const posts = await res.json();
 			createUserPosts(posts);
 		} catch (error) {
@@ -226,7 +226,7 @@ searchFormDate.addEventListener('submit', async (e) => {
 	try {
 		const searchInput = document.getElementById('search-date');
 		const searchValue = searchInput.value;
-		const res = await fetch(`http://localhost:3000/posts/date/${searchValue}`);
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/date/${searchValue}`);
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -240,7 +240,7 @@ searchFormBetween.addEventListener('submit', async (e) => {
 	try {
 		const startDate = document.getElementById('start-date').value;
 		const endDate = document.getElementById('end-date').value;
-		const res = await fetch(`http://localhost:3000/posts/date/${startDate}/${endDate}`);
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/date/${startDate}/${endDate}`);
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -253,7 +253,7 @@ searchFormWord.addEventListener('input', async (e) => {
 
 	try {
 		const word = document.getElementById('word').value.toLowerCase();
-		const res = await fetch(`http://localhost:3000/posts/word/${word}`);
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/word/${word}`);
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -266,7 +266,7 @@ searchFormCategory.addEventListener('submit', async (e) => {
 
 	try {
 		const category = document.getElementById('category').value;
-		const res = await fetch(`http://localhost:3000/posts/category/${category}`);
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/category/${category}`);
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -279,7 +279,7 @@ searchFormStatus.addEventListener('submit', async (e) => {
 
 	try {
 		const status = document.getElementById('status').value;
-		const res = await fetch(`http://localhost:3000/posts/status/${status}`);
+		const res = await fetch(`https://florinconnectapi.onrender.com/posts/status/${status}`);
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -291,7 +291,7 @@ clearFilters.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch('http://localhost:3000/posts');
+		const res = await fetch('https://florinconnectapi.onrender.com/posts');
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -303,7 +303,7 @@ filterVolunteerTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch('http://localhost:3000/posts/category/Volunteer');
+		const res = await fetch('https://florinconnectapi.onrender.com/posts/category/Volunteer');
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -315,7 +315,7 @@ filterSocialTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch('http://localhost:3000/posts/category/Social');
+		const res = await fetch('https://florinconnectapi.onrender.com/posts/category/Social');
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -327,7 +327,7 @@ filterRecyclingTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch('http://localhost:3000/posts/category/Recycling');
+		const res = await fetch('https://florinconnectapi.onrender.com/posts/category/Recycling');
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -339,7 +339,7 @@ filterWorkshopTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch('http://localhost:3000/posts/category/Workshop');
+		const res = await fetch('https://florinconnectapi.onrender.com/posts/category/Workshop');
 		const posts = await res.json();
 		createUserPosts(posts);
 	} catch (error) {
@@ -363,7 +363,7 @@ window.onload = async function (e) {
 				'Content-Type': 'application/json',
 			},
 		};
-		const res = await fetch(`http://localhost:3000/tokens/admin/${token}`, options);
+		const res = await fetch(`https://florinconnectapi.onrender.com/tokens/admin/${token}`, options);
 		const user = await res.json();
 		if (user.admin) {
 			document.getElementById('user-img').src = './assets/images/admin.png';
@@ -390,7 +390,7 @@ document.getElementById('logout').addEventListener('click', async (e) => {
 	};
 
 	try {
-		const res = await fetch(`http://localhost:3000/tokens/delete/${token}`, options);
+		const res = await fetch(`https://florinconnectapi.onrender.com/tokens/delete/${token}`, options);
 
 		if (res.status === 204) {
 			localStorage.removeItem('token');
