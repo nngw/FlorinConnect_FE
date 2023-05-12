@@ -15,113 +15,114 @@ const results = document.getElementById('search-results-date');
 
 const createUserPosts = (data) => {
 	results.innerHTML = '';
-	if (data.length){
+	if (data.length) {
 		data.forEach((post) => {
-		const card = document.createElement('div');
-		card.classList.add('card', 'flex-row', 'mb-4');
-		card.setAttribute('style', 'min-height: 300px; height: 100%; width: 100%; border: solid 2px #404040');
+			const card = document.createElement('div');
+			card.classList.add('card', 'flex-row', 'mb-4');
+			card.setAttribute('style', 'min-height: 300px; height: 100%; width: 100%; border: solid 2px #404040');
 
-		const img = document.createElement('img');
-		img.className = 'card-img-top';
-		const image_url = post.image_url || 'https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
-		img.setAttribute('src', `${image_url}`);
-		img.setAttribute('style', 'object-fit: cover; width: 20%; height: 300px; display: flex; align-items: center; justify-items: center;');
-		img.setAttribute('alt', 'Post image');
-		card.appendChild(img);
+			const img = document.createElement('img');
+			img.className = 'card-img-top';
+			const image_url =
+				post.image_url ||
+				'https://images.unsplash.com/photo-1609087998060-f567d481a1ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80';
+			img.setAttribute('src', `${image_url}`);
+			img.setAttribute('style', 'object-fit: cover; width: 20%; height: 300px; display: flex; align-items: center; justify-items: center;');
+			img.setAttribute('alt', 'Post image');
+			card.appendChild(img);
 
-		const cardBody = document.createElement('div');
-		cardBody.className = 'card-body';
-		cardBody.setAttribute('style', 'width: 100%; min-height: 100%; background-color: #404040; color: #fff;');
-		card.appendChild(cardBody);
-		
-		const cardHeading = document.createElement('h5');
-		cardHeading.className = 'card-title';
-		cardHeading.setAttribute('style', 'font-weight:600;')
-		cardHeading.textContent = post.title;
-		cardBody.appendChild(cardHeading);
+			const cardBody = document.createElement('div');
+			cardBody.className = 'card-body';
+			cardBody.setAttribute('style', 'width: 100%; min-height: 100%; background-color: #404040; color: #fff;');
+			card.appendChild(cardBody);
 
-		const cardParagraph = document.createElement('p');
-		cardParagraph.className = 'card-text';
-		cardParagraph.textContent = post.content;
-		cardBody.appendChild(cardParagraph);
+			const cardHeading = document.createElement('h5');
+			cardHeading.className = 'card-title';
+			cardHeading.setAttribute('style', 'font-weight:600;');
+			cardHeading.textContent = post.title;
+			cardBody.appendChild(cardHeading);
 
-		const cardCategory = document.createElement('p');
-		cardCategory.className = 'card-text';
-		cardCategory.textContent = 'Category: ' +post.category;
-		cardBody.appendChild(cardCategory);
+			const cardParagraph = document.createElement('p');
+			cardParagraph.className = 'card-text';
+			cardParagraph.textContent = post.content;
+			cardBody.appendChild(cardParagraph);
 
-		const cardDateCreated = document.createElement('p');
-		cardDateCreated.className = 'card-text';
-		cardDateCreated.textContent = 'Date Created: ' + post.date_created;
-		cardBody.appendChild(cardDateCreated);
-		
-		const cardCreatedBy = document.createElement('p');
-		cardCreatedBy.className = 'card-text';
-		cardCreatedBy.textContent = 'Added by: ' + post.added_by;
-		if (post.added_by === undefined) {
-			cardCreatedBy.textContent = 'Added by: Admin';
-		}
-		cardBody.appendChild(cardCreatedBy);
+			const cardCategory = document.createElement('p');
+			cardCategory.className = 'card-text';
+			cardCategory.textContent = 'Category: ' + post.category;
+			cardBody.appendChild(cardCategory);
 
-		const cardFooter = document.createElement('div');
-		cardFooter.className = 'post-task-button';
-		cardFooter.setAttribute('style', 'width: 20%; min-height: 100%; background-color: #404040; color: #fff; border-radius:0px;');
-		card.appendChild(cardFooter);
+			const cardDateCreated = document.createElement('p');
+			cardDateCreated.className = 'card-text';
+			cardDateCreated.textContent = 'Date Created: ' + post.date_created;
+			cardBody.appendChild(cardDateCreated);
 
-		const cardStatusDisplay = document.createElement('div');
-		cardStatusDisplay.className = 'card-footer';		
-		cardStatusDisplay.setAttribute('id', "clickedPostId")
-		const cardButton = document.createElement('a');
-		
-		const idStatusDisplay = document.createElement('p');
-		idStatusDisplay.setAttribute('class', 'idStatusDisplay')
-		idStatusDisplay.textContent = post.id
-		cardStatusDisplay.appendChild(idStatusDisplay)
-		
+			const cardCreatedBy = document.createElement('p');
+			cardCreatedBy.className = 'card-text';
+			cardCreatedBy.textContent = 'Added by: ' + post.added_by;
+			if (post.added_by === undefined) {
+				cardCreatedBy.textContent = 'Added by: Admin';
+			}
+			cardBody.appendChild(cardCreatedBy);
 
-		if (post.completed === true){	
-			cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#94FBAB;');
-		} else if (post.accepted === true) {
-			cardButton.classList.add('btn', 'carousel-button'); 
-			cardButton.innerHTML = 'Mark as<br>completed';
-			cardFooter.appendChild(cardButton);
-			cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#7D84B2;');
-		} else if (post.open === true) {
-			cardButton.classList.add('btn', 'carousel-button', 'status-task-buttons');
-			cardButton.innerHTML = 'Accept<br>task';
-			cardFooter.appendChild(cardButton);
-			cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#ED254E;');
-		}
+			const cardFooter = document.createElement('div');
+			cardFooter.className = 'post-task-button';
+			cardFooter.setAttribute('style', 'width: 20%; min-height: 100%; background-color: #404040; color: #fff; border-radius:0px;');
+			card.appendChild(cardFooter);
 
-		cardButton.addEventListener('click', async (e) => {
-			const id = getID(e.srcElement.offsetParent.innerText)
-			const options = {
-				method: 'PATCH',
-				headers: {
-				  Accept: 'application/json',
-				  'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({
-				  accepted: "true",
-				}),
-			  };
+			const cardStatusDisplay = document.createElement('div');
+			cardStatusDisplay.className = 'card-footer';
+			cardStatusDisplay.setAttribute('id', 'clickedPostId');
+			const cardButton = document.createElement('a');
 
-			  try {
-				const res = await fetch(`http://localhost:3000/posts/changestatus/${id}`, options)
-				window.location.reload();
+			const idStatusDisplay = document.createElement('p');
+			idStatusDisplay.setAttribute('class', 'idStatusDisplay');
+			idStatusDisplay.textContent = post.id;
+			cardStatusDisplay.appendChild(idStatusDisplay);
+
+			if (post.completed === true) {
+				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#94FBAB;');
+			} else if (post.accepted === true) {
+				cardButton.classList.add('btn', 'carousel-button');
+				cardButton.innerHTML = 'Mark as<br>completed';
+				cardFooter.appendChild(cardButton);
+				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#7D84B2;');
+			} else if (post.open === true) {
+				cardButton.classList.add('btn', 'carousel-button', 'status-task-buttons');
+				cardButton.innerHTML = 'Accept<br>task';
+				cardFooter.appendChild(cardButton);
+				cardStatusDisplay.setAttribute('style', 'border-radius:0px;background-color:#ED254E;');
+			}
+
+			cardButton.addEventListener('click', async (e) => {
+				const id = getID(e.srcElement.offsetParent.innerText);
+				const options = {
+					method: 'PATCH',
+					headers: {
+						Accept: 'application/json',
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						accepted: 'true',
+					}),
+				};
+
+				try {
+					const res = await fetch(`http://localhost:3000/posts/changestatus/${id}`, options);
+					window.location.reload();
 				} catch (error) {
-				  console.error(error);
+					console.error(error);
 				}
-		})
+			});
 
-		const getID = (text) => {
-			const array = text.split("\n");
-			const lastElement = array.pop();
-			return lastElement
-		}
+			const getID = (text) => {
+				const array = text.split('\n');
+				const lastElement = array.pop();
+				return lastElement;
+			};
 
-		card.appendChild(cardStatusDisplay);
-		results.appendChild(card);
+			card.appendChild(cardStatusDisplay);
+			results.appendChild(card);
 		});
 	} else {
 		const card = document.createElement('div');
@@ -130,7 +131,8 @@ const createUserPosts = (data) => {
 
 		const img = document.createElement('img');
 		img.className = 'card-img-top';
-		const image_url = 'https://images.unsplash.com/photo-1505244783088-5a36f166e5b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80';
+		const image_url =
+			'https://images.unsplash.com/photo-1505244783088-5a36f166e5b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80';
 		img.setAttribute('src', `${image_url}`);
 		img.setAttribute('style', 'object-fit: cover; width: 50%; height: 300px; display: flex; align-items: center; justify-items: center;');
 		img.setAttribute('alt', 'Post image');
@@ -140,85 +142,83 @@ const createUserPosts = (data) => {
 		cardBody.className = 'card-body';
 		cardBody.setAttribute('style', 'width: 100%; min-height: 100%; background-color: #eee; color: #fff;');
 		card.appendChild(cardBody);
-		
+
 		const cardHeading = document.createElement('h5');
 		cardHeading.className = 'card-title';
-		cardHeading.setAttribute('style', 'font-weight:800; color: #404040; text-align: center;')
+		cardHeading.setAttribute('style', 'font-weight:800; color: #404040; text-align: center;');
 		cardHeading.textContent = 'Sorry we could not find those posts';
 		cardBody.appendChild(cardHeading);
 
 		const cardParagraph = document.createElement('p');
 		cardParagraph.className = 'card-text';
-		cardParagraph.setAttribute('style', 'font-weight:800; color: #404040; text-align: center;')
-		cardParagraph.textContent = "Please refine your search criteria"
+		cardParagraph.setAttribute('style', 'font-weight:800; color: #404040; text-align: center;');
+		cardParagraph.textContent = 'Please refine your search criteria';
 		cardBody.appendChild(cardParagraph);
 
 		results.appendChild(card);
 	}
 };
 
-const queryString = window.location.search
+const queryString = window.location.search;
 console.log(queryString);
-if(!queryString){
+if (!queryString) {
 	window.addEventListener('load', async (e) => {
 		try {
-			const res = await fetch("http://localhost:3000/posts")
+			const res = await fetch('http://localhost:3000/posts');
 			const posts = await res.json();
-			createUserPosts(posts)
+			createUserPosts(posts);
 		} catch (error) {
 			console.error('error');
 		}
-	})
-} else if (queryString === '?volunteer'){
-	async function onloadQuery () { 
+	});
+} else if (queryString === '?volunteer') {
+	async function onloadQuery() {
 		try {
-			console.log('hello from try')
-			const res = await fetch("http://localhost:3000/posts/category/Volunteer")
+			console.log('hello from try');
+			const res = await fetch('http://localhost:3000/posts/category/Volunteer');
 			const posts = await res.json();
-			createUserPosts(posts)
+			createUserPosts(posts);
 		} catch (error) {
 			console.error('error');
 		}
 	}
-	onloadQuery()
+	onloadQuery();
 } else if (queryString === '?recycling') {
-	async function onloadQuery (){
+	async function onloadQuery() {
 		try {
-			const res = await fetch("http://localhost:3000/posts/category/Recycling")
+			const res = await fetch('http://localhost:3000/posts/category/Recycling');
 			const posts = await res.json();
-			createUserPosts(posts)
+			createUserPosts(posts);
 		} catch (error) {
 			console.error('error');
 		}
 	}
-	onloadQuery()
+	onloadQuery();
 } else if (queryString === '?social') {
-	async function onloadQuery (){
+	async function onloadQuery() {
 		try {
-			const res = await fetch("http://localhost:3000/posts/category/Social")
+			const res = await fetch('http://localhost:3000/posts/category/Social');
 			const posts = await res.json();
-			createUserPosts(posts)
+			createUserPosts(posts);
 		} catch (error) {
 			console.error('error');
 		}
 	}
-	onloadQuery()
+	onloadQuery();
 } else if (queryString === '?workshop') {
-	async function onloadQuery (){
+	async function onloadQuery() {
 		try {
-			const res = await fetch("http://localhost:3000/posts/category/Workshop")
+			const res = await fetch('http://localhost:3000/posts/category/Workshop');
 			const posts = await res.json();
-			createUserPosts(posts)
+			createUserPosts(posts);
 		} catch (error) {
 			console.error('error');
 		}
 	}
-	onloadQuery()
+	onloadQuery();
 } else {
-	createUserPosts(0)
+	createUserPosts(0);
 }
-
-
 
 searchFormDate.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -291,60 +291,116 @@ clearFilters.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch("http://localhost:3000/posts")
+		const res = await fetch('http://localhost:3000/posts');
 		const posts = await res.json();
-		createUserPosts(posts)
+		createUserPosts(posts);
 	} catch (error) {
 		console.error('error');
 	}
-})
+});
 
 filterVolunteerTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch("http://localhost:3000/posts/category/Volunteer")
+		const res = await fetch('http://localhost:3000/posts/category/Volunteer');
 		const posts = await res.json();
-		createUserPosts(posts)
+		createUserPosts(posts);
 	} catch (error) {
 		console.error('error');
 	}
-})
+});
 
 filterSocialTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch("http://localhost:3000/posts/category/Social")
+		const res = await fetch('http://localhost:3000/posts/category/Social');
 		const posts = await res.json();
-		createUserPosts(posts)
+		createUserPosts(posts);
 	} catch (error) {
 		console.error('error');
 	}
-})
+});
 
 filterRecyclingTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch("http://localhost:3000/posts/category/Recycling")
+		const res = await fetch('http://localhost:3000/posts/category/Recycling');
 		const posts = await res.json();
-		createUserPosts(posts)
+		createUserPosts(posts);
 	} catch (error) {
 		console.error('error');
 	}
-})
+});
 
 filterWorkshopTaskClick.addEventListener('click', async (e) => {
 	e.preventDefault();
 
 	try {
-		const res = await fetch("http://localhost:3000/posts/category/Workshop")
+		const res = await fetch('http://localhost:3000/posts/category/Workshop');
 		const posts = await res.json();
-		createUserPosts(posts)
+		createUserPosts(posts);
 	} catch (error) {
 		console.error('error');
 	}
-})
+});
 
+///////////////////////
+///////////////////////
+//////////////////////
 
+window.onload = async function (e) {
+	e.preventDefault();
+
+	const token = localStorage.getItem('token');
+	try {
+		const options = {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+		};
+		const res = await fetch(`http://localhost:3000/tokens/admin/${token}`, options);
+		const user = await res.json();
+		if (user.admin) {
+			document.getElementById('user-img').src = './assets/images/admin.png';
+		} else {
+			document.getElementById('user-img').src = './assets/images/user.png';
+		}
+	} catch (error) {
+		console.log('Can not find out if it is an admin');
+		console.error(error);
+	}
+};
+
+document.getElementById('logout').addEventListener('click', async (e) => {
+	e.preventDefault();
+
+	const token = localStorage.getItem('token');
+
+	const options = {
+		method: 'DELETE',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json',
+		},
+	};
+
+	try {
+		const res = await fetch(`http://localhost:3000/tokens/delete/${token}`, options);
+
+		if (res.status === 204) {
+			localStorage.removeItem('token');
+			alert('Token has been removed');
+			window.location.href = 'index.html';
+		} else {
+			console.log('Error L 39');
+		}
+	} catch (error) {
+		console.log('Can not delete token from db - ADMIN');
+		console.error(error);
+	}
+});

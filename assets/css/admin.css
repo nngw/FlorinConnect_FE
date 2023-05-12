@@ -145,3 +145,15 @@ a {
 	background-color: #a62639;
 	color: #ffcd19;
 }
+
+.nav-link {
+	color: #fff;
+}
+
+.nav-link:hover {
+	color: #ffcd19;
+}
+
+.nav-link:active {
+	color: #fff !important;
+}
