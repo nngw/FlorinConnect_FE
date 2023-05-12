@@ -22,7 +22,7 @@ form.addEventListener('submit', async (e) => {
 		}),
 	};
 
-	const response = await fetch('http://localhost:3000/users', options);
+	const response = await fetch('https://florinconnectapi.onrender.com/users', options);
 	const responseBody = await response.json();
 
 	// const userResponse = await fetch(localUserURL, options);
